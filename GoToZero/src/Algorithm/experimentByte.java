@@ -30,6 +30,8 @@ public class experimentByte {
         return (short) (e - 1);
     }
     
+    
+    
     private static void comprov(short e){
         short activo =  (short)0b1000000000000000;
         //short empty =   (short) 0;
@@ -38,7 +40,6 @@ public class experimentByte {
         //short S =       (short) 4;
         //short A =       (short) 8;
         //short Action =  (short) 16;
-        System.out.println(activo);
 
         if((activo & e) == activo){
             System.out.println("Entrada Activa \nProcediendo a lectura \n...");
@@ -93,8 +94,11 @@ public class experimentByte {
                 case 0:
                     System.out.println("No pulsaste Nada");
                     break;
-                
-            }            
+                // es per a compensar la variabilitat dels FPS i que el moviment siga continu en temps real encara que els FPS varien
+                    // entonces? No voldras dir que 0,03 es el ideal? moviment/ideal * real tio fes cast a double del (((double) moviment)/ ideal) * real
+            }            //al pasar moviment a double el que fas es que no es quede com a 0, perque al ferse en ints
+                        //necesites el desplaçament/velo, el delta i el valor ideal que ja el saps pero la velocitat la deus de saber(?)
+                        //no es de 16 en el nostre cas?
         }   else {
             System.out.println("Entrada Inactiva \n");
         }       

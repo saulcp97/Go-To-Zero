@@ -10,8 +10,13 @@ package Civilizacion;
  * @author saulc
  */
 public class Shijin {
+    private final String name;
+    private Town from;
     
-    
+    public Shijin(String n){
+        this.name = n;
+        this.from = Town.Capital;
+    }
     
     
 }

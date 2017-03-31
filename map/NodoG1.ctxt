@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.params=altura
+comment0.target=NodoG1(int)
+comment1.params=altura\ siguiente
+comment1.target=NodoG1(int,\ NodoG1)
+comment2.params=i
+comment2.target=int\ getInt(int)
+comment3.params=a
+comment3.target=void\ setContent(byte[])
+comment4.params=i\ n
+comment4.target=void\ setContent(int,\ byte)
+numComments=5

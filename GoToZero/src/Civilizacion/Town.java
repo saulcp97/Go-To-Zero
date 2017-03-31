@@ -10,6 +10,8 @@ package Civilizacion;
  * @author saulc
  */
 public class Town {
+    public static final Town Capital = new Town(0,0,0,(byte)1);
+    
     private int cordX;
     private int cordY;
     private int cordZ;

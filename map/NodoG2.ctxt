@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.params=
+comment0.target=NodoG2()
+comment1.params=siguiente
+comment1.target=NodoG2(NodoG2)
+comment2.params=prof
+comment2.target=NodoG2(int)
+comment3.params=prof\ siguiente
+comment3.target=NodoG2(int,\ NodoG2)
+comment4.params=
+comment4.target=int\ getSig()
+comment5.params=n
+comment5.target=void\ addColumn(int)
+comment6.params=i\ j
+comment6.target=void\ addFila(int,\ int)
+comment7.params=i
+comment7.target=NodoG1\ getNodeByIndex(int)
+numComments=8
