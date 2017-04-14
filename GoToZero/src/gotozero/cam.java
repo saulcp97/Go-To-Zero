@@ -54,7 +54,7 @@ public class cam
     }
     
     public int relativeMY() {
-        return MouseY - (this.height>>1) + (objective.getTamanyoY()>>1) - (this.objective.getZ()>>1);
+        return MouseY - (this.height>>1);
     }
     
     /**

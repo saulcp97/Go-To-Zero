@@ -99,7 +99,7 @@ public class Hilo extends Thread{
                     case 0:
                         if(this.frame.getPulsed()[1][1] == 10){
                             if(this.frame.getSelected() == 1){
-                                this.frame.setEstado((byte)0b01100011);
+                                this.frame.setEstado((byte)99);
                                 this.frame.repaint();
                                 
                                 this.setMap();
@@ -116,82 +116,52 @@ public class Hilo extends Thread{
                         this.World.mveHechizo();
                         this.World.liveCicle();
                         
-                        
-                        
-                        if(this.entry[0][0] == 1 && (this.entry[1][0] != 1)){
-                            this.World.moveInWorld(this.player,-4,0);
-                            this.player.setGrade((byte)0b00101101);
-                        } else if(this.entry[1][0] == 1 && (this.entry[0][0] != 1 )){
-                            this.World.moveInWorld(this.player,4,0);
-                            this.player.setGrade((byte)0b00001111);
+                        switch(this.frame.teclado & 0b1111) {
+                            case 0b1011:
+                            case 1:
+                                this.World.moveInWorld(this.player,0,-4);
+                                this.player.setGrade((byte)0b0);
+                                break;
+                                
+                            case 0b111:    
+                            case 0b10:
+                                this.World.moveInWorld(this.player,4,0);
+                                this.player.setGrade((byte)0b00001111);
+                                break;
+                            
+                            case 0b1110:
+                            case 0b100:
+                                this.World.moveInWorld(this.player,0,4);
+                                this.player.setGrade((byte)0b11110);
+                                break;
+                            
+                            case 0b1101:
+                            case 0b1000:
+                                this.World.moveInWorld(this.player,-4,0);
+                                this.player.setGrade((byte)0b00101101);
+                                break;
+                                
+                            case 0b11:
+                                this.World.moveInWorld(this.player,4,-4);
+                                break;
+                                
+                            case 0b110:
+                                this.World.moveInWorld(this.player,4,4);
+                                break;
+                            
+                            case 0b1100:
+                                this.World.moveInWorld(this.player,-4,4);
+                                break;
+                                
+                            case 0b1001:
+                                this.World.moveInWorld(this.player,-4,-4);
+                                break;
                         }
                         
-                        if(this.entry[0][1] == 1 && (this.entry[1][1] != 1)){
-                            this.World.moveInWorld(this.player,0,-4);
-                            this.player.setGrade((byte)0b0);
-                        } else if(this.entry[1][1] == 1 && (this.entry[0][1] != 1 )){
-                            this.World.moveInWorld(this.player,0,4);
-                            this.player.setGrade((byte)0b11110);
-                        }
-                        
-                        if(this.entry[0][2] == 1) {
+                        if((this.frame.teclado & 0b10000) == 0b10000) {
                             Camara.actualMouse();
                             this.World.addHechizo(new Magia((byte)1,this.player ,Camara.relativeMX(), Camara.relativeMY()));
                         }
-                        
-                        /*if(frame.getPulsed()[1][2] == 73){
-                            if(!Menus.Inventario.controlCh){
-                                Menus.Inventario.setVisibility(!Menus.Inventario.getVisibility());
-                                Menus.Inventario.controlCh = true;
-                            }
-                        }*/
-                        /*
-                        if(frame.getPulsed()[1][2] == -73) {
-                            Menus.Inventario.controlCh = false;
-                        }
-                        */
-                        /*
-                        if(Menus.Inventario.getVisibility()) {
-                            if(Menus.Inventario.getLMove() == -1) {
-                                switch(frame.getPulsed()[1][2]) {
-                                    case 37:
-                                        Menus.Inventario.pLeft();
-                                        Menus.Inventario.setLMove(37);
-                                        break;
-                                        
-                                    case 38:
-                                        Menus.Inventario.pUp();    
-                                        Menus.Inventario.setLMove(38);
-                                        break;
-                                    
-                                    case 39:
-                                        Menus.Inventario.pRight();
-                                        Menus.Inventario.setLMove(39);
-                                        break;
-                                    
-                                    case 40:
-                                        Menus.Inventario.pDown();
-                                        Menus.Inventario.setLMove(40);
-                                        break;
-                                    
-                                    
-                                }
-                            }
-                            
-                            if(frame.getPulsed()[1][2] == -37 || frame.getPulsed()[1][2] == -38 || frame.getPulsed()[1][2] == -39 || frame.getPulsed()[1][2] == -40) {
-                                Menus.Inventario.setLMove(-1);
-                                
-                                
-                            }
-                        }
-                        /*
-                            if(this.player.getPosX() < 0) {
-                                this.player.setPosX(0);
-                            }
-                            if(this.player.getPosY() < 0) {
-                                this.player.setPosY(0);
-                            }
-                        */
                 
                         if (countS == 0){
                             if(this.player.getSed() == 0) {
@@ -217,20 +187,15 @@ public class Hilo extends Thread{
                             --s2;
                             countS = 60;
                         }
-                        --countS;
-                
-                        this.Camara.actualitze();
-                        //this.output = this.World.toPaint();
-
-                        this.World.actualToPaint(this.Camara.getXRest(),this.Camara.getYRest(),this.Camara.getWidth(),this.Camara.getHeight());
-                        this.frame.setEstado(this.EstadoMaquina);
-                        //frame.setInput(this.output); 
-                            
-                break;
-            }
-                         
+                    --countS;
+                    this.Camara.actualitze();
+                    //this.output = this.World.toPaint();
+                    this.World.actualToPaint(this.Camara.getXRest(),this.Camara.getYRest(),this.Camara.getWidth(),this.Camara.getHeight());
+                    this.frame.setEstado(this.EstadoMaquina);
+                    //frame.setInput(this.output);                    
+                    break;
+                }
                 //VVVVV Imprescindible VVVVVV
-                
                 this.frame.repaint();
                 
                 Hilo.sleep(1000/FPS);

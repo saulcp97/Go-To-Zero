@@ -94,7 +94,7 @@ public class Magia extends Sphere {
     @Override
     public void toRect(Rect e) {
         super.toRect(e);
-        e.setImg(null);
+        e.setImg(null);        
         switch(this.Element) {
             case 0:
             case 1:

@@ -1,12 +1,10 @@
 package gotozero;
 
 import gotozero.Organice.ListRect;
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.image.BufferedImage;
 import java.awt.Dimension;
 
 import java.awt.Toolkit;
@@ -35,7 +33,8 @@ public class PantallaOut extends JFrame{
     //String tecla pulsada
     private String pressed;
     private byte[][] puls = new byte[2][];
-
+    
+    public int teclado = 0b00000000000000000000000000000000;
     //Numero de casillas a representar
     private int sizeWorldX;
     private int sizeWorldY;
@@ -208,16 +207,12 @@ public class PantallaOut extends JFrame{
                     
                     if(this.selected != 0) {
                         gAux.drawImage(this.menuIniSelector, (getWidth()>>1)+95, ((getHeight() - 300)>>1) + 55 + this.selected * 40, null);
-                    }
-                    
+                    }    
                 }
                 break;
-            
             case 2:   
-                
                 gAux.setColor (Color.white);
                 gAux.fillRect(0,0,dimAux.width, dimAux.height);
-
 
                 gAux.setColor (Color.blue);
         /*
@@ -266,7 +261,6 @@ public class PantallaOut extends JFrame{
                 this.ListInput.resetMarcador();
                 Rect ply = this.ListInput.getCarryData();
                 gAux.drawImage(ply.getOutput(), ply.getX()-Camara.getXRest(), ply.getY()-Camara.getYRest(),null);
-
                 
                 gAux.setColor(Color.red);
                 gAux.fillRect (16, getHeight() - 32 - 24, Camara.getMageLife()*((getWidth()>>1) - 16)/100, 24);
@@ -332,7 +326,9 @@ public class PantallaOut extends JFrame{
 
         @Override
         public void keyTyped(KeyEvent e) {
-
+            if(e.getKeyCode() == 65){
+                System.out.println("pulasdo a");
+            }
         }
 
         @Override
@@ -406,20 +402,40 @@ public class PantallaOut extends JFrame{
                                 Menus.selectedOpened.setLMove(40);
                             }
                             break;
-                        case 65://A
-                            puls[0][0] = 1;
-                            break;
                         case 87://w
                             puls[0][1] = 1;
+                            
+                            if((teclado & 0b1) == 0){
+                                teclado += 1;
+                            }
                             break;
-                        case 68:
+                        case 68://d
                             puls[1][0] = 1;
+                            
+                            if((teclado & 0b10) == 0){
+                                teclado += 0b10;
+                            }               
                             break;
-                        case 83:
+                        case 83://s
                             puls[1][1] = 1;
-                            break; 
-                        case 32:    
+                            
+                            if((teclado & 0b100) == 0){
+                                teclado += 0b100;
+                            }
+                            break;
+                        case 65://A
+                            puls[0][0] = 1;
+                            
+                            if((teclado & 0b1000) == 0){
+                                teclado += 0b1000;
+                            }
+                            break;
+                        case 32://espai    
                             puls[0][2] = 1;
+                            
+                            if((teclado & 0b10000) == 0){
+                                teclado += 0b10000;
+                            }
                             break;
                         case 27:
                             System.exit(0);
@@ -428,7 +444,6 @@ public class PantallaOut extends JFrame{
                         break;
 
                         case 73: //I
-
                             if(!Menus.Inventario.controlCh){
                                 Menus.Inventario.setVisibility(!Menus.Inventario.getVisibility());
                                 Menus.Personaje.setVisibility(false);
@@ -437,18 +452,17 @@ public class PantallaOut extends JFrame{
                                     Menus.selectedOpened = null;
                                 }
                             }
-
                         break;
 
                         case 80: //P
-                        if(Menus.selectedOpened == null) {
-                            if(!Menus.Personaje.controlCh){
-                                Menus.Personaje.setVisibility(!Menus.Personaje.getVisibility());
-                                Menus.Inventario.setVisibility(false);
-                                Menus.Personaje.controlCh = true;
+                            if(Menus.selectedOpened == null) {
+                                if(!Menus.Personaje.controlCh){
+                                    Menus.Personaje.setVisibility(!Menus.Personaje.getVisibility());
+                                    Menus.Inventario.setVisibility(false);
+                                    Menus.Personaje.controlCh = true;
+                                }
                             }
-                        }
-                        break;
+                            break;
 
                         case KeyEvent.VK_ENTER: //enter
 
@@ -464,15 +478,15 @@ public class PantallaOut extends JFrame{
                              * 
                              * }
                              */
-                        if(Menus.selectedOpened == null) {
-                            if(Menus.Inventario.getVisibility()) {
-                                Menus.Inventario.Action();
-                                System.out.println("INTRO");
-                            }
-                        } else {
-                            Menus.selectedOpened.Action();
+                            if(Menus.selectedOpened == null) {
+                                if(Menus.Inventario.getVisibility()) {
+                                    Menus.Inventario.Action();
+                                    System.out.println("INTRO");
+                                }
+                            } else {
+                                Menus.selectedOpened.Action();
 
-                        }
+                            }
                         break;
                         
                         case KeyEvent.VK_BACK_SPACE:
@@ -483,13 +497,6 @@ public class PantallaOut extends JFrame{
                                 Menus.selectedOpened = null;
                             }
                         break;
-
-
-                        default:
-                        if(pu <= 127) {
-                            puls[1][2] = (byte)pu;
-                        }
-
                     }
                 break;
             }
@@ -525,20 +532,25 @@ public class PantallaOut extends JFrame{
                 break;
                 case 2:
                     switch(e.getKeyCode()) {
-                        case 65://A
-                        puls[0][0] = 0;
-                        break;
                         case 87://w
                         puls[0][1] = 0;
+                        teclado -= 1;
                         break;
                         case 68:
                         puls[1][0] = 0;
+                        teclado -= 0b10;
                         break;
                         case 83:
                         puls[1][1] = 0;
+                        teclado -= 0b100;
                         break;
-                        case 32:    
+                        case 65://A
+                        puls[0][0] = 0;
+                        teclado -= 0b1000;
+                        break;
+                        case 32://Espacio    
                         puls[0][2] = 0;
+                        teclado -= 0b10000;
                         break;
                         case 0://Eliminar caso 0
                         break;
@@ -565,10 +577,6 @@ public class PantallaOut extends JFrame{
 
                         case 80:
                         Menus.Personaje.controlCh = false;
-                        break;
-
-                        default:
-                        puls[1][2] = 0;
                         break;
                     }
                 break;
