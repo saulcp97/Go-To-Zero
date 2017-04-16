@@ -93,10 +93,14 @@ public class Monster extends Creatures {
         //entry.setY(this.y - (this.TamanyoY>>1)-(this.z>>1));
         //entry.setWidth(this.TamanyoX);
         //entry.setHeight(this.TamanyoY);
-        //entry.setImg(this.Sprite.getImg());
+        //entry.setImg(this.Sprite.getImg());  
+    }
+    
+    public boolean AgroZone(Block obj, int r){
         
-        
-        
+        return (this.x - r)<(obj.x + obj.width) && (this.x + this.width + r) > (obj.x)
+            && (this.y - r)<(obj.y + obj.height) && (this.y + this.height + r) > (obj.y)
+            && (this.z - r)<(obj.z + obj.deep) && (this.z + this.deep + r) > (obj.z);
     }
     
 }

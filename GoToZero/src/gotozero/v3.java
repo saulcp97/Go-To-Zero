@@ -7,8 +7,7 @@ package gotozero;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class v3
-{
+public class v3 {
     // instance variables - replace the example below with your own
     protected int x;
     protected int y;

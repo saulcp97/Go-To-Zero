@@ -1,9 +1,6 @@
 package gotozero;
 
-import java.util.*;
 import java.awt.Image;
-import java.awt.Point;
-import java.awt.MouseInfo;
 /**
  * Write a description of class Mage here.
  * 
@@ -11,7 +8,7 @@ import java.awt.MouseInfo;
  * @version (a version number or a date)
  */
 public class Mage extends lifes {
-    private byte Genero;
+    private final byte Genero;
     private sprite Sprite;
     
     public Mage(byte g) {

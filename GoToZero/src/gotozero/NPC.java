@@ -15,7 +15,7 @@ public class NPC extends Creatures{
      * Constructor for objects of class NPC
      */
     public NPC() {
-        super((byte)-50,"");
+        super((byte)1,"");
     }
 
     public NPC(String ruta) {
@@ -27,7 +27,7 @@ public class NPC extends Creatures{
     
     @Override
     public void toRect(Rect re){
-        re.setX(this.x + ((this.TamanyoX - this.width)>>1));
+        re.setX(this.x + ((this.width - this.TamanyoX) >> 1));
         re.setY(this.y - (this.height) - (this.z>>1));
         re.setWidth(this.TamanyoX);
         re.setHeight(this.TamanyoY);

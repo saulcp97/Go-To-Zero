@@ -83,11 +83,19 @@ public class Edify {
                 w.addToWorld(x + 5, y + 5, z + 10,1);
                 
                 w.addToWorld(x    , y, z + 15,1);
+                break;    
+            case 84857://Babel Tower!
                 
                 break;
             case 1000000://Mansion  51 * 51 10
                 
                 //addToWorld(x - 250, y - 250, z, 1);
+                for(int i = -48; i <= 48; ++i){
+                    for(int j = 0; j <= 96; ++j){
+                        w.addToWorld(x + i*5, y + j*5 /*- 250*/, z - 5, 4);                
+                    }
+                }
+                
                 
                 w.addToWorld(x - 240, y - 10, z, 1);
                 w.addToWorld(x - 235, y - 10, z, 1);
@@ -106,7 +114,6 @@ public class Edify {
                 w.addToWorld(x - 250, y, z, 1);
                 w.addToWorld(x + 250, y, z, 1);
                 
-                
                 for(int i = -44; i <= 44; ++i){
                     w.addToWorld(x + i*5, y /*- 250*/, z, 1);                
                 }
@@ -116,12 +123,12 @@ public class Edify {
                 w.addToWorld(x - 250, y + 10, z, 1);
                 w.addToWorld(x + 250, y + 10, z, 1);
 
-                for(int i = -45; i <= 45; ++i){
+                for(int i = -44; i <= 44; ++i){
                     w.addToWorld(x + i*5, y + 10, z, 1);                
                 }
                 
                 w.addToWorld(x - 245, y + 15, z, 1);
-                w.addToWorld(x - 230, y + 15, z, 1);
+                w.addToWorld(x - 225, y + 15, z, 1);
                 w.addToWorld(x - 200, y + 15, z, 1);
                 w.addToWorld(x + 200, y + 15, z, 1);
                 w.addToWorld(x + 230, y + 15, z, 1);
@@ -131,7 +138,7 @@ public class Edify {
                 w.addToWorld(x - 230, y + 20, z, 1);
                 w.addToWorld(x - 200, y + 20, z, 1);
                 w.addToWorld(x + 200, y + 20, z, 1);
-                w.addToWorld(x + 230, y + 20, z, 1);
+                w.addToWorld(x + 225, y + 20, z, 1);
                 w.addToWorld(x + 240, y + 20, z, 1);
                 
                 for(int i = 0; i <= 25; ++i) {
@@ -548,6 +555,94 @@ public class Edify {
 
                 w.addToWorld(x + 230, y + 270, z, 1);
                 w.addToWorld(x + 240, y + 270, z, 1);
+                
+                for(int i = 54; i <= 92; ++i){
+                    w.addToWorld(x - 240, y + i * 5, z, 1);
+                    w.addToWorld(x - 230, y + i * 5, z, 1);
+
+                    w.addToWorld(x + 230, y + i * 5, z, 1);
+                    w.addToWorld(x + 240, y + i * 5, z, 1);
+                }
+                
+                
+                
+                w.addToWorld(x - 245, y + 465, z, 1);
+                w.addToWorld(x - 225, y + 465, z, 1);
+
+                w.addToWorld(x + 225, y + 465, z, 1);
+                w.addToWorld(x + 245, y + 465, z, 1);
+                
+                
+                
+                
+                w.addToWorld(x - 250, y + 470, z, 1);
+                w.addToWorld(x - 220, y + 470, z, 1);
+
+                for(int i = -215; i <= -50; i += 5){
+                    w.addToWorld(x + i, y + 470, z, 1);                
+                }
+                for(int i = 50; i <= 215; i += 5){
+                    w.addToWorld(x + i, y + 470, z, 1);                
+                }
+                
+                w.addToWorld(x + 220, y + 470, z, 1);
+                w.addToWorld(x + 250, y + 470, z, 1);
+                
+                
+                
+                w.addToWorld(x - 250, y + 475, z, 1);
+                w.addToWorld(x - 45, y + 475, z, 1);
+                w.addToWorld(x + 45, y + 475, z, 1);
+                w.addToWorld(x + 250, y + 475, z, 1);
+                
+                
+                
+                w.addToWorld(x - 250, y + 480, z, 1);
+                w.addToWorld(x - 220, y + 480, z, 1);
+                for(int i = -215; i <= -65; i += 5){
+                    w.addToWorld(x + i, y + 480, z, 1);                
+                }
+                
+                w.addToWorld(x - 45, y + 480, z, 1);
+                w.addToWorld(x + 45, y + 480, z, 1);
+
+                for(int i = 65; i <= 215; i += 5){
+                    w.addToWorld(x + i, y + 480, z, 1);                
+                }
+                w.addToWorld(x + 220, y + 480, z, 1);
+                w.addToWorld(x + 250, y + 480, z, 1);
+                
+                
+                
+                w.addToWorld(x - 245, y + 485, z, 1);
+                w.addToWorld(x - 225, y + 485, z, 1);
+                
+                w.addToWorld(x - 60, y + 485, z, 1);
+                w.addToWorld(x - 45, y + 485, z, 1);
+                w.addToWorld(x + 45, y + 485, z, 1);
+                w.addToWorld(x + 60, y + 485, z, 1);
+                
+                w.addToWorld(x + 225, y + 485, z, 1);
+                w.addToWorld(x + 245, y + 485, z, 1);
+                
+                
+                
+                
+                w.addToWorld(x - 240, y + 490, z, 1);
+                w.addToWorld(x - 235, y + 490, z, 1);
+                w.addToWorld(x - 230, y + 490, z, 1);
+                
+                w.addToWorld(x - 60, y + 490, z, 1);
+                w.addToWorld(x - 55, y + 490, z, 1);
+                w.addToWorld(x - 50, y + 490, z, 1);
+                w.addToWorld(x + 50, y + 490, z, 1);
+                w.addToWorld(x + 55, y + 490, z, 1);
+                w.addToWorld(x + 60, y + 490, z, 1);
+                               
+
+                w.addToWorld(x + 230, y + 490, z, 1);
+                w.addToWorld(x + 235, y + 490, z, 1);
+                w.addToWorld(x + 240, y + 490, z, 1);
                 break;
         }    
     }   

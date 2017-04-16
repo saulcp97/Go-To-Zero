@@ -8,8 +8,7 @@ import java.awt.Image;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Block extends v3
-{
+public class Block extends v3 implements Comparable<Block>{
     // instance variables - replace the example below with your own
     protected int width;
     protected int height;
@@ -17,7 +16,7 @@ public class Block extends v3
     
     private byte Tipo;
     
-    private Rect R;
+    //private Rect R;
     /**
      * Constructor for objects of class Bock
      */
@@ -27,7 +26,7 @@ public class Block extends v3
         this.height = 64;
         this.deep = 64;
         this.Tipo = 1;
-        this.R = new Rect();
+        //this.R = new Rect();
     }
 
     public Block(int i,int j,int k) {
@@ -36,7 +35,7 @@ public class Block extends v3
         this.height = 64;
         this.deep = 64;
         this.Tipo = 1;
-        this.R = new Rect();
+        //this.R = new Rect();
     }
     
     public Block(int i, int j,byte t) {
@@ -79,13 +78,15 @@ public class Block extends v3
         }
     }
     
-    public void setRect(Rect e) {
-        this.R = e;
-    }
+       
+        
+    //public void setRect(Rect e) {
+    //    this.R = e;
+    //}
     
-    public Image getOutput() {
-        return this.R.getOutput();
-    }
+    //public Image getOutput() {
+    //    return this.R.getOutput();
+    //}
     
     public boolean collision(Block o) {
         return (this.z < o.z + o.deep && this.z + this.deep > o.z)
@@ -147,4 +148,33 @@ public class Block extends v3
                 break;
         }
     }
+
+    @Override
+    public boolean equals(Object o) {
+        return (o instanceof Block)
+                && this.x == ((Block) o).x
+                && this.y == ((Block) o).y
+                && this.z == ((Block) o).z
+                && this.width == ((Block) o).width
+                && this.height == ((Block) o).height
+                && this.deep == ((Block) o).deep;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 67 * hash + this.width;
+        hash = 67 * hash + this.height;
+        hash = 67 * hash + this.deep;
+        return hash;
+    }
+    
+    @Override
+    public int compareTo(Block t) {
+        if(this.y + this.height == t.y + t.height){
+            return (this.z + this.deep) - (t.z + t.deep);
+        } else {
+            return (this.y + this.height) - (t.y + t.height);
+        }   
+    } 
 }

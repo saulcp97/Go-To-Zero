@@ -50,6 +50,15 @@ public class lifes extends Block{
                 this.TamanyoX = 64;
                 this.TamanyoY = 64;
                 break;
+            case 1:
+                //Gigante
+                this.deep = 64;
+                this.width = 64;
+                this.height = 64;
+                
+                this.TamanyoX = 128;
+                this.TamanyoY = 128;
+                break;
         }
     }
     

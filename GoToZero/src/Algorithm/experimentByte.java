@@ -12,7 +12,6 @@ package Algorithm;
 public class experimentByte {
     
     public static void main(String[] args) {
-        
                   //    (short) 0b111111111111111;
         short input =   (short) 0b1000000000000000;
         comprov(input);
@@ -29,7 +28,6 @@ public class experimentByte {
     private static short soltarW(short e){
         return (short) (e - 1);
     }
-    
     
     
     private static void comprov(short e){

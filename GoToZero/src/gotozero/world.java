@@ -3,14 +3,14 @@ package gotozero;
 //import gotozero.Data.List;
 import gotozero.Constructor.Edify;
 import gotozero.Organice.ListRect;
-
+import OrdenacionRect.OrdenBlock;
 /**
  * Write a description of class world here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
-public class world {
+public final class world {
 
     // instance variables - replace the example below with your own
     private int width;
@@ -22,13 +22,7 @@ public class world {
     //Para implementaciones mas eficientes usar listas enlazadas con polimorfismo en la variable Data
     private Magia[] hechizos;
     private int MagiaOcupada;
-
     private Block[] byMap;
-
-    private Block[] Dynamik;
-    private int used;
-
-    private Rect[] out;
 
     private ListRect out2 = new ListRect();
 
@@ -183,9 +177,9 @@ public class world {
                         if ((j - 2) % 5 == 0 && (i - 2) % 5 == 0) {
                             
                             if (i > 50 && i < this.width * 5 - 50 && j > 50 && j < this.width * 5 - 50 ) {
-                                this.addToWorld(i, j, k, 4);
+                                this.addToWorld(i, j, 2, 4);
                             } else {
-                                this.addToWorld(i, j, k, 5);
+                                this.addToWorld(i, j, 2, 5);
                             }
                         }
                     } else if (k >= 7 && (k - 2) % 5 == 0) {
@@ -195,12 +189,12 @@ public class world {
                                 || ((i == (this.width * 5) - 3) && (j - 2) % 5 == 0)) {
                             this.addToWorld(i, j, k, 6);
                         } else if (k == 7) {
-                            if ((i == 7 || i == 12 || i == 32 || i == 37) && (j == 7 || j == 12)) {
+                            /*if ((i == 7 || i == 12 || i == 32 || i == 37) && (j == 7 || j == 12)) {
                                 this.addToWorld(i, j, k, 2);
                             }                         
                             if(i == 22 && j == 32) {
                                 addHouse(1000000, i, j, k);
-                            }
+                            }*/
                         }
                     }
                 }
@@ -270,15 +264,20 @@ public class world {
     }
     
     public final void addToWorld(int x, int y, int z, int Type) {
-
         if (Type < 1000) {
-            Block[] aux = new Block[this.byMap.length + 1];
-            for (int i = 0; i < this.byMap.length; ++i) {
-                aux[i] = this.byMap[i];
+            Block nextB = new Block(x, y, z, (byte) Type);
+            boolean Overload = false;
+            for (int i = 0; !Overload && i < this.byMap.length; ++i) {
+                Overload = this.byMap[i].equals(nextB);
+            }      
+            if(!Overload){
+                Block[] aux = new Block[this.byMap.length + 1];
+                for (int i = 0; i < this.byMap.length; ++i) {
+                    aux[i] = this.byMap[i];
+                }
+                aux[this.byMap.length] = nextB;
+                this.byMap = aux;
             }
-
-            aux[this.byMap.length] = new Block(x, y, z, (byte) Type);
-            this.byMap = aux;
         }
     }
 
@@ -296,6 +295,7 @@ public class world {
     }
 
     public void liveCicle() {
+        OrdenBlock.quicksort(byMap);
         this.gravedad(this.Player);
         if (this.Player.getZ() < 0) {
             this.Player.setZ(0);
@@ -309,12 +309,14 @@ public class world {
                     if (this.LiveForm[i].getZ() < 0) {
                         this.LiveForm[i].setZ(0);
                     }
-                    int objX = (this.Player.getX() - this.LiveForm[i].getX()) >> 7;
-                    int objY = (this.Player.getY() - this.LiveForm[i].getY()) >> 7;
-
-                    //int modulo = 100;
-                    moveInWorld(this.LiveForm[i], objX, objY);
-
+                    
+                    //Inteligencia artificial
+                    if(this.LiveForm[i].AgroZone(Player, 448)){
+                        int objX = (this.Player.getX() - this.LiveForm[i].getX()) >> 7;
+                        int objY = (this.Player.getY() - this.LiveForm[i].getY()) >> 7;
+                        //int modulo = 100;
+                        moveInWorld(this.LiveForm[i], objX, objY);
+                    }
                 }
             }
         }

@@ -1,6 +1,5 @@
 package gotozero;
 
-
 /**
  * Write a description of class Hilo here.
  * 
@@ -34,11 +33,8 @@ public class Hilo extends Thread{
     
     private int countS = 0, s2 = 0, s10 = 0;
     
-    private byte ciclosParaFPS;
-    private byte[][] entry;
-    
-    
-    
+    private byte ciclosParaFPS;    
+        
     public Hilo(int i) {
         this.EstadoMaquina = (byte)0;
         
@@ -66,21 +62,6 @@ public class Hilo extends Thread{
         this.frame.setWorldSizeY(this.World.getNumberRY());
         
         this.frame.setInputMD(this.World.getOutput());
-        this.entry = this.frame.getPulsed();
-        //Block[] aux = this.World.getByMap();
-        //this.output = this.World.toPaint();
-
-
-        
-        /**
-        for(int i = 0; i < aux.length; i++) {
-            if(aux[i] != null){
-                this.output[i + 1] = new Rect();
-                aux[i].toRect(this.output[1 + i]);
-            }
-            else{ this.output[i+1]=null; }
-        }
-        */
        
         frame.setInput(this.output); 
     }
@@ -97,7 +78,9 @@ public class Hilo extends Thread{
                 
                 switch(this.EstadoMaquina){
                     case 0:
-                        if(this.frame.getPulsed()[1][1] == 10){
+                        if((this.frame.teclado & 0b100000) == 0b100000){
+                            this.frame.teclado -= 0b100000;
+                            
                             if(this.frame.getSelected() == 1){
                                 this.frame.setEstado((byte)99);
                                 this.frame.repaint();
@@ -108,7 +91,6 @@ public class Hilo extends Thread{
                                 this.frame.clearImages();
                                 
                             }
-                            this.frame.clearPressed();
                         } 
                     break;
                     

@@ -32,7 +32,7 @@ public class PantallaOut extends JFrame{
     private byte selected;
     //String tecla pulsada
     private String pressed;
-    private byte[][] puls = new byte[2][];
+    //private byte[][] puls = new byte[2][];
     
     public int teclado = 0b00000000000000000000000000000000;
     //Numero de casillas a representar
@@ -110,14 +110,6 @@ public class PantallaOut extends JFrame{
         this.sizeWorldY = y;
     }
     
-    public void clearPressed(){
-        for(int i = 0; i < this.puls.length; ++i){
-            for(int j = 0; j < this.puls[i].length; ++j){
-                this.puls[i][j] = 0;
-            }
-        }
-        
-    }
 
     public String getPressed() {
         if(this.pressed != null) {  
@@ -126,10 +118,6 @@ public class PantallaOut extends JFrame{
         else {
             return "";
         }   
-    }
-
-    public byte[][] getPulsed(){
-        return this.puls;
     }
 
     /**
@@ -142,13 +130,6 @@ public class PantallaOut extends JFrame{
 
         this.sizeWorldX = 0;
         this.sizeWorldY = 0;
-
-        for (int i = 0; i < this.puls.length; i++) {
-            this.puls[i] = new byte[3];
-            this.puls[i][0] = 0;
-            this.puls[i][1] = 0;
-            this.puls[i][2] = 0;
-        }
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -402,37 +383,27 @@ public class PantallaOut extends JFrame{
                                 Menus.selectedOpened.setLMove(40);
                             }
                             break;
-                        case 87://w
-                            puls[0][1] = 1;
-                            
+                        case 87://w                            
                             if((teclado & 0b1) == 0){
                                 teclado += 1;
                             }
                             break;
-                        case 68://d
-                            puls[1][0] = 1;
-                            
+                        case 68://d                            
                             if((teclado & 0b10) == 0){
                                 teclado += 0b10;
                             }               
                             break;
-                        case 83://s
-                            puls[1][1] = 1;
-                            
+                        case 83://s                            
                             if((teclado & 0b100) == 0){
                                 teclado += 0b100;
                             }
                             break;
-                        case 65://A
-                            puls[0][0] = 1;
-                            
+                        case 65://A                            
                             if((teclado & 0b1000) == 0){
                                 teclado += 0b1000;
                             }
                             break;
-                        case 32://espai    
-                            puls[0][2] = 1;
-                            
+                        case 32://espai                                
                             if((teclado & 0b10000) == 0){
                                 teclado += 0b10000;
                             }
@@ -510,7 +481,7 @@ public class PantallaOut extends JFrame{
                 case 0:
                     switch(e.getKeyCode()){
                         case KeyEvent.VK_ENTER:
-                            puls[1][1] = 10;
+                            teclado += 0b100000;
                             //menuIni = null;
                             //menuIniDark = null;
                         break;
@@ -533,23 +504,18 @@ public class PantallaOut extends JFrame{
                 case 2:
                     switch(e.getKeyCode()) {
                         case 87://w
-                        puls[0][1] = 0;
                         teclado -= 1;
                         break;
                         case 68:
-                        puls[1][0] = 0;
                         teclado -= 0b10;
                         break;
                         case 83:
-                        puls[1][1] = 0;
                         teclado -= 0b100;
                         break;
                         case 65://A
-                        puls[0][0] = 0;
                         teclado -= 0b1000;
                         break;
                         case 32://Espacio    
-                        puls[0][2] = 0;
                         teclado -= 0b10000;
                         break;
                         case 0://Eliminar caso 0
