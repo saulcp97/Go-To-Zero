@@ -45,7 +45,7 @@ public class Hilo extends Thread{
                 
         this.ciclosParaFPS = 0;
         
-        this.player = new Mage((byte)-1);
+        this.player = new Mage((byte)0);
 
         this.Camara.setFocus(this.player);
 
@@ -56,7 +56,7 @@ public class Hilo extends Thread{
 
     public void setMap(){
         //this.World = new world(world.DemoCalorius(250,4));
-        this.World = new world(100,4);
+        this.World = new world(100, 2);
         this.World.setPlayer(this.player);
         this.frame.setWorldSizeX(this.World.getNumberRX());
         this.frame.setWorldSizeY(this.World.getNumberRY());
@@ -67,7 +67,8 @@ public class Hilo extends Thread{
     }
 
     /**
-     *Bucle principal de juego
+     * Bucle principal de juego, en el que se llaman a los metodos que modifican al mundo a partir de los eventos, o
+     * la misma naturaleza.
      */
     @Override
     public void run(){
@@ -89,52 +90,41 @@ public class Hilo extends Thread{
                                 
                                 this.EstadoMaquina = 2;
                                 this.frame.clearImages();
-                                
                             }
                         } 
-                    break;
-                    
+                        break;
                     case 2:    
                         this.World.mveHechizo();
                         this.World.liveCicle();
+                        
+                         this.player.setDir((byte)((this.frame.teclado & 0b11000000) >> 6));                       
                         
                         switch(this.frame.teclado & 0b1111) {
                             case 0b1011:
                             case 1:
                                 this.World.moveInWorld(this.player,0,-4);
-                                this.player.setGrade((byte)0b0);
                                 break;
-                                
                             case 0b111:    
                             case 0b10:
                                 this.World.moveInWorld(this.player,4,0);
-                                this.player.setGrade((byte)0b00001111);
                                 break;
-                            
                             case 0b1110:
                             case 0b100:
                                 this.World.moveInWorld(this.player,0,4);
-                                this.player.setGrade((byte)0b11110);
                                 break;
-                            
                             case 0b1101:
                             case 0b1000:
                                 this.World.moveInWorld(this.player,-4,0);
-                                this.player.setGrade((byte)0b00101101);
                                 break;
-                                
                             case 0b11:
                                 this.World.moveInWorld(this.player,4,-4);
                                 break;
-                                
                             case 0b110:
                                 this.World.moveInWorld(this.player,4,4);
                                 break;
-                            
                             case 0b1100:
                                 this.World.moveInWorld(this.player,-4,4);
                                 break;
-                                
                             case 0b1001:
                                 this.World.moveInWorld(this.player,-4,-4);
                                 break;
@@ -169,13 +159,13 @@ public class Hilo extends Thread{
                             --s2;
                             countS = 60;
                         }
-                    --countS;
-                    this.Camara.actualitze();
-                    //this.output = this.World.toPaint();
-                    this.World.actualToPaint(this.Camara.getXRest(),this.Camara.getYRest(),this.Camara.getWidth(),this.Camara.getHeight());
-                    this.frame.setEstado(this.EstadoMaquina);
-                    //frame.setInput(this.output);                    
-                    break;
+                        --countS;
+                        this.Camara.actualitze();
+                        //this.output = this.World.toPaint();
+                        this.World.actualToPaint(this.Camara.getXRest(),this.Camara.getYRest(),this.Camara.getWidth(),this.Camara.getHeight());
+                        this.frame.setEstado(this.EstadoMaquina);
+                        //frame.setInput(this.output);                    
+                        break;
                 }
                 //VVVVV Imprescindible VVVVVV
                 this.frame.repaint();

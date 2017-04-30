@@ -2,8 +2,10 @@ package gotozero;
 
 import gotozero.Organice.*;
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+
 /**
  * Write a description of class rect here.
  * 
@@ -25,6 +27,11 @@ public class Rect implements Actualizable{
     private Image rsc;
     private Image out;
     
+    private static int WidthWorld;
+    private static int HeightWorld;
+
+    private int[] section = new int[3];
+    
     /**
      * Constructor for objects of class rect
      */
@@ -38,6 +45,8 @@ public class Rect implements Actualizable{
         
         this.rsc = null;
         this.out = null;
+        
+        this.setSection(1, 1, 1);
     }
     
     public Rect(Mage mago) {
@@ -49,6 +58,8 @@ public class Rect implements Actualizable{
         this.Type = 1;
         this.out = mago.getImage();
 
+        
+        this.setSection(1, 1, 1);
         switch(mago.getGenero()){
             case "FEMENINO":
                 this.col = Color.pink;
@@ -65,6 +76,8 @@ public class Rect implements Actualizable{
     public void actualMage(Mage mago) {
         this.x = mago.getX() - (mago.getTamanyoX()>>2);
         this.y = mago.getY() - (mago.getTamanyoY()>>1)-(mago.getZ()>>1);
+        
+        this.setSection(1, 1, 1);
     }
     
     public byte getType() {
@@ -103,6 +116,8 @@ public class Rect implements Actualizable{
             default:
                 col = Color.black;
         }
+        
+        this.setSection(1, 1, 1);
     }
     
     public void setX(int x) {
@@ -175,7 +190,9 @@ public class Rect implements Actualizable{
             this.Type = ((Rect) i).Type;
             this.col =  ((Rect) i).col;
 
-
+            this.section[0] = ((Rect) i).section[0];
+            this.section[1] = ((Rect) i).section[1];
+            this.section[2] = ((Rect) i).section[2];
             //this.setImg(((BufferedImage)((Rect) i).out).getSubimage(0, 0, ((BufferedImage)((Rect) i).out).getWidth(), ((BufferedImage)((Rect) i).out).getHeight()));
             if(((Rect)i).Type == 1) {
                 this.setImg(((Rect)i).out);
@@ -192,30 +209,48 @@ public class Rect implements Actualizable{
         res += "Position: (" + this.x + "," + this.y +"), Size: (" + this.width + "," + this.height + "), Type: " + this.Type + "\n";
         return res;
     }
-    
-        
-    public int compareTo(Rect i){
-        return 0;
-    }
-
-    @Override
-    public int compareTo(Object i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     @Override
     public Rect clone() {
         Rect n = new Rect(this.x, this.y, this.width, this.height, 0);
         n.col = this.col;
         n.Type = this.Type;
+        n.section = this.section.clone();
         if(this.out != null){
-            //n.setImg(((BufferedImage)this.out).getSubimage(0, 0, ((BufferedImage)this.out).getWidth(), ((BufferedImage)this.out).getHeight()));
             n.setImg(this.out);
         }
         return n;         
     }
 
+    public void setSection(int X,int Y, int Z){
+        this.section[0] = X;
+        this.section[1] = Y;
+        this.section[2] = Z;
+    }
 
-
-   
+    public int getWS(){
+        return this.section[0];
+    }
+    public int getHS(){
+        return this.section[1];
+    }
+    public int getDS(){
+        return this.section[2];
+    }
+    
+    public void painTo (Graphics gc,int aX,int aY){
+        for(int iS = 0; iS < this.section[0] && (iS * 64 + aX) <= Rect.WidthWorld; ++iS){
+            for(int kS = 0; kS < this.section[2] - 1 && (aY + (this.section[1] - 1) * 64 - 32 * kS) <= Rect.HeightWorld && (aY + (this.section[1] - 1) * 64 - 32 * kS + 128) >= 0; ++kS){
+                gc.drawImage(this.out, aX + 64 * iS, aY + (this.section[1] - 1) * 64 - 32 * kS,null);
+            }
+            for(int jS = 0; jS < this.section[1] && (aY + jS * 64 - 32 * (this.section[2] - 1) <= Rect.HeightWorld); ++jS){
+                gc.drawImage(this.out, aX + 64 * iS, aY + jS * 64 - 32 * (this.section[2] - 1),null);
+            }
+        }
+    }
+    
+    public static void setPantalla(int w, int h){
+        Rect.WidthWorld = w;
+        Rect.HeightWorld = h;
+    }
 }

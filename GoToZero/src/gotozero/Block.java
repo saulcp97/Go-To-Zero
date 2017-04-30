@@ -123,10 +123,13 @@ public class Block extends v3 implements Comparable<Block>{
     
     public void toRect(Rect re){
         re.setX(this.x);
-        re.setY(this.y - (this.height>>1) - (this.z>>1));
+        re.setY(this.y - (this.z>>1));
         re.setWidth(this.width);
-        re.setHeight(this.deep + (this.height>>1));
+        re.setHeight((this.deep>>1) + (this.height));
         re.setType((byte) 0);
+        re.setSection(this.width >> 6, this.height >> 6, this.deep >> 6);
+
+        
         switch(this.Tipo){
             case 1:
                 re.setImg(sprite.Muro.getImg());
@@ -149,7 +152,7 @@ public class Block extends v3 implements Comparable<Block>{
         }
     }
 
-    @Override
+   @Override
     public boolean equals(Object o) {
         return (o instanceof Block)
                 && this.x == ((Block) o).x
@@ -159,7 +162,31 @@ public class Block extends v3 implements Comparable<Block>{
                 && this.height == ((Block) o).height
                 && this.deep == ((Block) o).deep;
     }
+    
+    /*
+    *Retorna si dos bloques son compatibles para la fusión
+    *
+    */
+    public boolean Compatible(Block other) {
+        return this.Tipo == other.Tipo
+                && ((this.x + this.width == other.x && this.y == other.y && this.z == other.z && this.height == other.height && this.deep == other.deep)
+                || (this.y + this.height == other.y && this.x == other.x && this.z == other.z && this.width == other.width && this.deep == other.deep)
+                || (this.z + this.deep == other.z && this.x == other.x && this.y == other.y && this.width == other.width && this.height == other.height));
+    }
 
+    public void fusion(Block bloque) {
+        if(this.x != bloque.x) {
+            this.width += bloque.width;      
+        }
+        if(this.y != bloque.y) {
+            this.height += bloque.height;
+        }
+        if(this.z != bloque.z) {
+            this.deep += bloque.deep;
+        }
+        
+    }
+    
     @Override
     public int hashCode() {
         int hash = 7;
@@ -171,10 +198,25 @@ public class Block extends v3 implements Comparable<Block>{
     
     @Override
     public int compareTo(Block t) {
-        if(this.y + this.height == t.y + t.height){
-            return (this.z + this.deep) - (t.z + t.deep);
-        } else {
-            return (this.y + this.height) - (t.y + t.height);
-        }   
+        
+        if(this.z + this.deep <= t.z) {
+            return -1;
+        }        
+        if(t.z + t.deep <= this.z) {
+            return 1;
+        }
+        if(this.y + this.height <= t.y) {
+            return -1;
+        }
+        if(t.y + t.height <= this.y) {
+            return 1;    
+        }      
+        if(this.x + this.width <= t.x){
+            return - 1;
+        }       
+        if(t.x + t.width <= this.x) {
+           return 1;
+        }       
+        return 0;
     } 
 }

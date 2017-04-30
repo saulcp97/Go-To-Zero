@@ -181,16 +181,6 @@ public class Rect implements Actualizable{
         res += "Position: (" + this.x + "," + this.y +"), Size: (" + this.width + "," + this.height + "), Type: " + this.Type + "\n";
         return res;
     }
-    
-        
-    public int compareTo(Rect i){
-        return 0;
-    }
-
-    @Override
-    public int compareTo(Object i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     @Override
     public Rect clone() {

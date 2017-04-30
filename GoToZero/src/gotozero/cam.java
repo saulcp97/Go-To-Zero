@@ -10,8 +10,7 @@ import java.awt.Dimension;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class cam
-{
+public class cam {
 
     // instance variables - replace the example below with your own
     private int x,y;
@@ -28,8 +27,7 @@ public class cam
     /**
      * Constructor for objects of class cam
      */
-    public cam()
-    {
+    public cam() {
         // initialise instance variables
         x = 0;
         y = 0;

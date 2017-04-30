@@ -18,8 +18,9 @@ public class lifes extends Block{
     protected int TamanyoY;
     
     protected Magia magia;
-    
     protected byte Tipo;
+    
+    protected byte dir;
     
     protected Inventary Inventario;
     
@@ -79,7 +80,7 @@ public class lifes extends Block{
                 this.deep = 64;
                 this.width = 32;
                 this.height = 32;
-                
+                this.dir = 2;
                 this.TamanyoX = 64;
                 this.TamanyoY = 64;
                 break;
@@ -103,14 +104,12 @@ public class lifes extends Block{
         int bebida = a.getHidratacion() + this.Sed;
         if( bebida >= 100) {this.Sed = 100; }
         else { this.Sed = (byte)bebida; }
-
     }
     
     public void Alimentacion(){
         this.Hambre += 10;
         //int aux = a.getHidratacion() + this.Sed;
         this.Sed = 100;
-
     }
     
     public void decrLife(){

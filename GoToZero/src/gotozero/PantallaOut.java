@@ -11,9 +11,12 @@ import java.awt.Toolkit;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 
 /**
@@ -127,6 +130,7 @@ public class PantallaOut extends JFrame{
         Camara = new cam();
         this.pressed = null;
         addKeyListener(new MyKeyListener());
+        addMouseListener(new MyMouseListener());
 
         this.sizeWorldX = 0;
         this.sizeWorldY = 0;
@@ -171,6 +175,7 @@ public class PantallaOut extends JFrame{
         || dimCanvas.height != dimAux.height) {
             dimAux = dimCanvas;
             dibujoAux = createImage(dimAux.width, dimAux.height);
+            Rect.setPantalla(getWidth(), getHeight());
             gAux = dibujoAux.getGraphics();
         }
         
@@ -233,7 +238,7 @@ public class PantallaOut extends JFrame{
                                 gAux.fillRect (aX, aY, tP.getWidth(), tP.getHeight());
                             break;
                             case 1:
-                                gAux.drawImage(tP.getOutput(),aX, aY,null);
+                                tP.painTo(gAux, aX, aY);
                             break;
                         }
                     //}
@@ -273,8 +278,7 @@ public class PantallaOut extends JFrame{
 
                         }
                     }
-                }
-        
+                }        
                 if(Menus.Personaje.getVisibility()) {
                     Rect[] r = Menus.Personaje.toPaint();
                     for(int i = 0; i < r.length; i++) {
@@ -283,7 +287,6 @@ public class PantallaOut extends JFrame{
                         }
                     }
                 }
-        
                 if(Menus.selectedOpened != null) {
                     Rect[] r = Menus.selectedOpened.toPaint();
                     for(int i = 0; i < r.length; i++) {
@@ -302,15 +305,50 @@ public class PantallaOut extends JFrame{
         
         g.drawImage(dibujoAux, 0,0, this);
     }
-
-    public class MyKeyListener implements KeyListener {
+    
+    public class MyMouseListener implements MouseListener{
 
         @Override
-        public void keyTyped(KeyEvent e) {
-            if(e.getKeyCode() == 65){
-                System.out.println("pulasdo a");
+        public void mouseClicked(MouseEvent me) {
+
+        }
+
+        @Override
+        public void mousePressed(MouseEvent me) {
+            if(SwingUtilities.isLeftMouseButton(me)){
+                if(EstadoMaquina == 2) {
+                    if((teclado & 0b10000) == 0) {
+                        teclado += 0b10000;
+                    }
+                }
             }
         }
+
+        @Override
+        public void mouseReleased(MouseEvent me) {
+            if(SwingUtilities.isLeftMouseButton(me)){
+                if(EstadoMaquina == 2) {
+                    teclado -= 0b10000;
+                }
+            }
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent me) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent me) {
+
+
+        }
+    }
+
+    public class MyKeyListener implements KeyListener {
+        
+        @Override
+        public void keyTyped(KeyEvent e) {}
 
         @Override
         public void keyPressed(KeyEvent e) {
@@ -385,22 +423,26 @@ public class PantallaOut extends JFrame{
                             break;
                         case 87://w                            
                             if((teclado & 0b1) == 0){
-                                teclado += 1;
+                                teclado -= (0b11000000 & teclado);
+                                teclado += 0b00000001;//direccion 0
                             }
                             break;
                         case 68://d                            
                             if((teclado & 0b10) == 0){
-                                teclado += 0b10;
+                                teclado -= (0b11000000 & teclado);
+                                teclado += 0b01000010;//direccion 1
                             }               
                             break;
                         case 83://s                            
                             if((teclado & 0b100) == 0){
-                                teclado += 0b100;
+                                teclado -= (0b11000000 & teclado);
+                                teclado += 0b10000100;//dirección 2
                             }
                             break;
                         case 65://A                            
                             if((teclado & 0b1000) == 0){
-                                teclado += 0b1000;
+                                teclado -= (0b11000000 & teclado);
+                                teclado += 0b11001000;
                             }
                             break;
                         case 32://espai                                
@@ -412,7 +454,7 @@ public class PantallaOut extends JFrame{
                             System.exit(0);
                             break;
                         case 0://Eliminar caso 0
-                        break;
+                            break;
 
                         case 73: //I
                             if(!Menus.Inventario.controlCh){
@@ -423,7 +465,7 @@ public class PantallaOut extends JFrame{
                                     Menus.selectedOpened = null;
                                 }
                             }
-                        break;
+                            break;
 
                         case 80: //P
                             if(Menus.selectedOpened == null) {
@@ -436,19 +478,6 @@ public class PantallaOut extends JFrame{
                             break;
 
                         case KeyEvent.VK_ENTER: //enter
-
-                            /**
-                             *  switch(this.EstadoMaquina){
-                             *      case 0:
-                             *          this.EstadoMaquina += this.selected;
-                             *          break;
-                             *      case 1:
-                             *          this.EstadoMaquina++;
-                             * 
-                             * 
-                             * 
-                             * }
-                             */
                             if(Menus.selectedOpened == null) {
                                 if(Menus.Inventario.getVisibility()) {
                                     Menus.Inventario.Action();
@@ -456,9 +485,8 @@ public class PantallaOut extends JFrame{
                                 }
                             } else {
                                 Menus.selectedOpened.Action();
-
                             }
-                        break;
+                            break;
                         
                         case KeyEvent.VK_BACK_SPACE:
                             if(Menus.Inventario.getVisibility() || Menus.Personaje.getVisibility()) {
@@ -467,7 +495,7 @@ public class PantallaOut extends JFrame{
 
                                 Menus.selectedOpened = null;
                             }
-                        break;
+                            break;
                     }
                 break;
             }

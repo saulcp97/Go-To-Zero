@@ -5,9 +5,7 @@
  */
 package gotozero.Organice;
 
-import com.sun.org.apache.bcel.internal.generic.GotoInstruction;
 import gotozero.Rect;
-
 /**
  *
  * @author saulc

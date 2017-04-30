@@ -17,7 +17,7 @@ import javax.imageio.ImageIO;
 public class ConstructionMapRecognision {
     
     public static void main(String[] args) {
-        recognise("../img/Map/Chees.bmp");
+        recognise("../img/Map/Chees.png");
     }
     
     private static Image load(String r){

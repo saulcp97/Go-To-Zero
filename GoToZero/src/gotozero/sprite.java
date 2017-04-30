@@ -44,7 +44,7 @@ public class sprite
         this.ruta = new String[1];
         this.ruta[0] = rut;
         this.Input = new BufferedImage[1];
-        ImagePanel(this.ruta[0],0);
+        ImagePanel(this.ruta[0]);
     }
     
     public sprite(Mage mago) {
@@ -59,7 +59,11 @@ public class sprite
                 this.ruta[0] = "img/femina.png";
                 break;
             case "MASCULINO":
-                this.ruta[0] = "img/masculin.png";
+                this.ruta[0] = "img/SpriteMen.png";
+                this.ImagePanel(this.ruta[0],0);
+                this.ImagePanel(this.ruta[0],1);
+                this.ImagePanel(this.ruta[0],2);
+                this.ImagePanel(this.ruta[0],3);
                 break;
         }
     }
@@ -68,15 +72,33 @@ public class sprite
         this.ruta = rutas;
     } 
     
+    public void ImagePanel(String ruta) {
+        if(ruta != null) {
+            try {
+              System.out.println(ruta);
+              this.Input[0] = ImageIO.read(sprite.class.getResource(ruta));
+              this.Output = this.Input[0];
+            } catch (IOException ex) {
+                // handle exception...
+            }
+        }
+    } 
+    
     public void ImagePanel(String ruta, int i) {
         if(ruta != null) {
             try {
               System.out.println(ruta);
-              this.Input[i] = ImageIO.read(sprite.class.getResource(ruta));
+              this.Input[i] = ImageIO.read(sprite.class.getResource(ruta)).getSubimage(0, i*64, 64, 64);
               this.Output = this.Input[i];
             } catch (IOException ex) {
                 // handle exception...
             }
+        }
+    }
+    
+    public void setOutput(int dir){
+        if(dir < this.Input.length){
+            this.Output = this.Input[dir];
         }
     }
     

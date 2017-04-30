@@ -15,6 +15,5 @@ public interface Actualizable <N>{
     void actualizar(Object i);
     @Override
     String toString();
-    int compareTo(Object i);
 }
  
