@@ -1,6 +1,7 @@
 package gotozero;
 
 import java.awt.Image;
+import java.io.Serializable;
 
 /**
  * Write a description of class Bock here.
@@ -8,13 +9,13 @@ import java.awt.Image;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Block extends v3 implements Comparable<Block>{
+public class Block extends v3 implements Comparable<Block>,Serializable{
     // instance variables - replace the example below with your own
     protected int width;
     protected int height;
     protected int deep;
     
-    private byte Tipo;
+    protected byte Tipo;
     
     //private Rect R;
     /**
@@ -48,6 +49,10 @@ public class Block extends v3 implements Comparable<Block>{
             case 4:
             case 5:
             case 6:
+            case 7:
+            case 8:
+            case 9:
+            case 10:
                 this.x = (i<<6)/ 5 -128/5;
                 this.y = (j<<6)/ 5 -128/5;
                 this.z = 0;
@@ -68,12 +73,27 @@ public class Block extends v3 implements Comparable<Block>{
             case 4:
             case 5:
             case 6:
+            case 7:
+            case 8:
+            case 9:
+            case 10:
+            case 11:
+            case 14:
                 this.x = (i<<6)/ 5 -128/5;
                 this.y = (j<<6)/ 5 -128/5;
                 this.z = (k<<6)/ 5 -128/5;
                 this.width = 64;
                 this.height = 64;
                 this.deep = 64;
+                break;
+                
+            case 12:
+                this.x = (i<<6)/ 5 -128/5;
+                this.y = (j<<6)/ 5 -128/5;
+                this.z = (k<<6)/ 5 -128/5;
+                this.width = 64;
+                this.height = 64;
+                this.deep = 128;
                 break;
         }
     }
@@ -114,7 +134,13 @@ public class Block extends v3 implements Comparable<Block>{
         
         return res;
     }
-    
+
+    public void setPonderedPos(int i, int j, int k) {
+        this.x = (i<<6)/ 5 -128/5;
+        this.y = (j<<6)/ 5 -128/5;
+        this.z = (k<<6)/ 5 -128/5;
+    }
+
     public void setSize(int w, int h, int d) {
         this.width = w;
         this.height = h;
@@ -125,6 +151,7 @@ public class Block extends v3 implements Comparable<Block>{
         re.setX(this.x);
         re.setY(this.y - (this.z>>1));
         re.setWidth(this.width);
+        
         re.setHeight((this.deep>>1) + (this.height));
         re.setType((byte) 0);
         re.setSection(this.width >> 6, this.height >> 6, this.deep >> 6);
@@ -132,10 +159,10 @@ public class Block extends v3 implements Comparable<Block>{
         
         switch(this.Tipo){
             case 1:
-                re.setImg(sprite.Muro.getImg());
+                re.setImg(sprite.imgMuroPiedra);
                 break;
             case 2:
-                re.setImg(sprite.ColumnCoin.getImg());
+                re.setImg(sprite.SueloVirgen.getImg());
                 break;
             case 3:
                 re.setImg(sprite.FloorCoin.getImg());
@@ -148,6 +175,32 @@ public class Block extends v3 implements Comparable<Block>{
                 break;
             case 6:
                 re.setImg(sprite.MuroBaldosas.getImg());
+                break;
+            case 7:
+                re.setImg(sprite.BaseMuroMaid.getImg());
+                break;
+            case 8:
+                re.setImg(sprite.MuroMaid.getImg());
+                break;
+            case 9:
+                re.setImg(sprite.Mesa.getImg());
+                break;
+            case 10:
+                re.setImg(sprite.BaseMuroMaidExterno.getImg());
+                break;
+            case 11:
+                re.setImg(sprite.MuroMaidExterno.getImg());
+                break;
+            case 12:
+                re.setY(this.y - (this.z>>1) + (96 - 128));
+                re.setImg(sprite.TiendaOtakuTacanyo.getImg());
+                re.setSection(1,1,1);
+                break;
+            case 13: //Bolsa loot
+                re.setImg(sprite.altarLoot.getImg());
+                break;
+            case 14:
+                re.setImg(sprite.MuroBambuV1.getImg());
                 break;
         }
     }
@@ -198,25 +251,25 @@ public class Block extends v3 implements Comparable<Block>{
     
     @Override
     public int compareTo(Block t) {
-        
-        if(this.z + this.deep <= t.z) {
+/*
+        if(this.z + this.deep <= t.z || this.y + this.height <= t.y) {
             return -1;
-        }        
-        if(t.z + t.deep <= this.z) {
+        }
+
+        if(t.z + t.deep <= this.z || t.y + t.height <= this.y) {
             return 1;
         }
-        if(this.y + this.height <= t.y) {
-            return -1;
+*/
+
+        if(this.z == t.z){
+            return this.y - t.y;
+        } else {
+            return this.z - t.z;
         }
-        if(t.y + t.height <= this.y) {
-            return 1;    
-        }      
-        if(this.x + this.width <= t.x){
-            return - 1;
-        }       
-        if(t.x + t.width <= this.x) {
-           return 1;
-        }       
-        return 0;
-    } 
+
+    }
+
+    public int getWidth() { return this.width;}
+    public int getHeight() { return this.height;}
+    public int getDeep() {return this.deep;}
 }

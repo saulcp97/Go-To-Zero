@@ -22,10 +22,6 @@ public class test {
         ancestro.start();
 
         
-        
-        
-        
-        
         try {
             Thread.sleep(1000);
         } catch (InterruptedException ex) {

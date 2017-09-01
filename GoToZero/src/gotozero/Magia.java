@@ -33,42 +33,23 @@ public class Magia extends Sphere {
     /**
      *
      * @param t
-     * @param mago
-     */
-    public Magia(byte t, Mage mago) {
-        super(mago.getX(), mago.getY(), mago.getZ(), 0, 0, 0, 8);
-        this.Element = t;
-        switch(mago.getGrade()) {
-            case 0:
-                this.setVelo(0,-20,0);
-                break;
-            case 15:
-                this.setVelo(20,0,0);
-                break;
-            case 30:
-                this.setVelo(0,20,0);
-                break;
-            case 45:
-                this.setVelo(-20,0,0);
-                break;
-        }
-        
-        this.Durabilidad = 10;
-    }
-    
-    /**
-     *
-     * @param t
-     * @param mago
+     * @param l
      * @param mx
      * @param my
      */
-    public Magia(byte t,lifes mago,int mx, int my) {
-        super(mago.getX()+4, mago.getY(), mago.getZ(), mx, my, 0, 8);
+    public Magia(byte t,lifes l,int mx, int my,int r) {
+        super(l.getX()+4, l.getY(), l.getZ(), mx, my, 0, r);
         this.Element = t;
         //this.setVelo(mx,my,0);
-        
         this.Durabilidad = 10;
+    }
+    
+    public void setDurability(int d){
+        this.Durabilidad = d;
+    }
+    
+    public byte getElement() {
+        return this.Element;
     }
     
     /**
@@ -94,7 +75,9 @@ public class Magia extends Sphere {
     @Override
     public void toRect(Rect e) {
         super.toRect(e);
-        e.setImg(null);        
+        e.setImg(null);
+        e.setSection(1, 1, 1);
+        
         switch(this.Element) {
             case 0:
             case 1:
@@ -121,11 +104,15 @@ public class Magia extends Sphere {
                 e.setCol(Color.gray);
                 e.setType((byte)0);
                 break;
+            case 10://Magia monstruo
+                e.setCol(Color.darkGray);
+                e.setImg(sprite.BalaBoss.getImg());
+                e.setType((byte)1);
+                break;
             default:
                 e.setCol(Color.PINK);
-                e.setType((byte)0);
+                e.setImg(sprite.BalaBoss.getImg());
+                e.setType((byte)1);
         }
-
-        
     }
 }

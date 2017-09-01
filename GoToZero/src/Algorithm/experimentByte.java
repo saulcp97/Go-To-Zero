@@ -5,6 +5,9 @@
  */
 package Algorithm;
 
+import java.io.*;
+import java.util.Scanner;
+
 /**
  *
  * @author saulc
@@ -12,13 +15,75 @@ package Algorithm;
 public class experimentByte {
     
     public static void main(String[] args) {
-                  //    (short) 0b111111111111111;
-        short input =   (short) 0b1000000000000000;
-        comprov(input);
-        
-        input = pulsarW(input);
-        comprov(input);
-        
+
+        Scanner sc = new Scanner(System.in);
+        FileOutputStream fos = null;
+        DataOutputStream salida = null;
+
+        FileInputStream fis = null;
+        DataInputStream entrada = null;
+        int n;
+/*
+        try {
+            fos = new FileOutputStream("src/gotozero/txt/datos.dat");
+            salida = new DataOutputStream(fos);
+
+            System.out.print("Introduce número entero. -1 para acabar: ");
+            n = sc.nextInt();
+            while (n != -1) {
+                salida.writeInt(n); //se escribe el número entero en el fichero
+                System.out.print("Introduce número entero. -1 para acabar: ");
+                n = sc.nextInt();
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                if (fos != null) {
+                    fos.close();
+                }
+                if (salida != null) {
+                    salida.close();
+                }
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+*/
+
+        System.out.println("Escribiendo la lectura de fichero");
+        try {
+            fis = new FileInputStream("src/gotozero/txt/-1.dat");
+            entrada = new DataInputStream(fis);
+            while (true) {
+                n = entrada.readInt();  //se lee  un entero del fichero
+                System.out.println(n);  //se muestra en pantalla
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        } catch (EOFException e) {
+            System.out.println("Fin de fichero");
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                if (fis != null) {
+                    fis.close();
+                }
+                if (entrada != null) {
+                    entrada.close();
+                }
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+
+
+
+
     }
     
     private static short pulsarW(short e){

@@ -1,6 +1,8 @@
 package gotozero;
 
 
+import gotozero.ObjectGestion.Inventary;
+
 /**
  * Write a description of class lifes here.
  * 
@@ -10,7 +12,7 @@ package gotozero;
 public class lifes extends Block{
     // instance variables - replace the example below with your own
     protected String Name;
-    
+    protected byte cooldown = 0;
     protected byte Hambre;
     protected byte Sed;
     
@@ -134,6 +136,16 @@ public class lifes extends Block{
     public byte getGrade() {
         return this.grade;
     }
+
+    public void setDir(byte dir) {
+        if(this.grade != dir) {
+            this.grade = dir;
+        }
+    }
+    public byte getDir() {
+        return this.dir;
+    }
+
     //Datos de relleno
     public int[] getVectorPos() {
         return new int[] {x,y};

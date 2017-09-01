@@ -28,9 +28,24 @@ public class sprite
     public static final sprite Suelo = new sprite("img/suelo.png");
     public static final sprite BotellaSed = new sprite("img/botellaSed.png");
     public static final sprite ConPollo = new sprite("img/alitaDePollo.PNG");
-    public static final sprite SinPollo = new sprite("img/alitaDePolloSinPollo.PNG");
-    
-    
+    public static final sprite SinPollo = new sprite("img/alitaDePolloSinPollo.png");
+
+
+    public static final sprite BaseMuroMaid = new sprite("img/baseMuroMaidCaffe.png");
+    public static final sprite MuroMaid = new sprite("img/muroMaidCafe.png");
+    public static final sprite Mesa = new sprite("img/mesa.png");
+    public static final sprite BalaBoss = new sprite("img/BossBullet.png");
+    public static final sprite BaseMuroMaidExterno = new sprite("img/baseMuroMaidCaffeExterior.png");
+    public static final sprite MuroMaidExterno = new sprite("img/muroMaidCafeExterior.png");
+    public static final sprite altarLoot = new sprite("img/altarLoot.png");
+    public static final sprite MuroBambuV1 = new sprite("img/bambuWall.png");
+    public static final sprite SueloVirgen = new sprite("img/sprites/sueloVirgen.png");
+    public static final sprite MuroPiedra = new sprite("img/sprites/piedra.png");
+
+
+    public static final sprite TiendaOtakuTacanyo = new sprite("img/vendedor.png");
+
+    public static final BufferedImage imgMuroPiedra = sprite.MuroPiedra.getImg();
     
     /**
      * Constructor for objects of class sprite
@@ -40,13 +55,25 @@ public class sprite
         this.ruta[0] = "/img";
     }
 
+
     public sprite(String rut) {
         this.ruta = new String[1];
         this.ruta[0] = rut;
         this.Input = new BufferedImage[1];
         ImagePanel(this.ruta[0]);
     }
-    
+
+    //Para mostruos
+    public sprite(String ruta, int dir) {
+        this.ruta = new String[1];
+        this.ruta[0] = ruta;
+        this.Input = new BufferedImage[dir];
+        for(int i = 0; i < dir; ++i) {
+            this.ImagePanel(this.ruta[0],i);
+        }
+    }
+
+
     public sprite(Mage mago) {
         this.ruta = new String[8];
         this.Input = new BufferedImage[8];
@@ -78,8 +105,9 @@ public class sprite
               System.out.println(ruta);
               this.Input[0] = ImageIO.read(sprite.class.getResource(ruta));
               this.Output = this.Input[0];
-            } catch (IOException ex) {
+            } catch (Exception ex) {
                 // handle exception...
+                System.err.println(ex.toString());
             }
         }
     } 
@@ -105,4 +133,10 @@ public class sprite
     public BufferedImage getImg() {
         return this.Output;
     }
+
+
+
+
+
+
 }

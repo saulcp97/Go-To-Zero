@@ -14,6 +14,8 @@ public class Creatures extends lifes{
     protected sprite Sprite;
     /**
      * Constructor for objects of class Creature
+     * @param e
+     * @param r
      */
     public Creatures(byte e,String r) {
         super(e);
@@ -26,7 +28,7 @@ public class Creatures extends lifes{
         this.IntelligenceType = a;
     }
     
-    public void IA() {
+    public void IA(world w) {
         
         switch(this.IntelligenceType) {
              case 0:

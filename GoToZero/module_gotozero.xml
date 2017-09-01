@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_gotozero" default="compile.module.gotozero">
+  <dirname property="module.gotozero.basedir" file="${ant.file.module_gotozero}"/>
+  
+  <property name="module.jdk.home.gotozero" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.gotozero" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.gotozero" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.gotozero" value="-encoding UTF-8 -source 1.8 -target 1.8 ${compiler.args}"/>
+  
+  <property name="gotozero.output.dir" value="${module.gotozero.basedir}/out/production/GoToZero"/>
+  <property name="gotozero.testoutput.dir" value="${module.gotozero.basedir}/out/test/GoToZero"/>
+  
+  <path id="gotozero.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="gotozero.module.production.classpath">
+    <path refid="${module.jdk.classpath.gotozero}"/>
+  </path>
+  
+  <path id="gotozero.runtime.production.module.classpath">
+    <pathelement location="${gotozero.output.dir}"/>
+  </path>
+  
+  <path id="gotozero.module.classpath">
+    <path refid="${module.jdk.classpath.gotozero}"/>
+    <pathelement location="${gotozero.output.dir}"/>
+  </path>
+  
+  <path id="gotozero.runtime.module.classpath">
+    <pathelement location="${gotozero.testoutput.dir}"/>
+    <pathelement location="${gotozero.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.gotozero">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.gotozero">
+    <patternset refid="excluded.from.module.gotozero"/>
+  </patternset>
+  
+  <path id="gotozero.module.sourcepath">
+    <dirset dir="${module.gotozero.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.gotozero" depends="compile.module.gotozero.production,compile.module.gotozero.tests" description="Compile module GoToZero"/>
+  
+  <target name="compile.module.gotozero.production" depends="register.custom.compilers" description="Compile module GoToZero; production classes">
+    <mkdir dir="${gotozero.output.dir}"/>
+    <javac2 destdir="${gotozero.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.gotozero}/javac">
+      <compilerarg line="${compiler.args.gotozero}"/>
+      <bootclasspath refid="gotozero.module.bootclasspath"/>
+      <classpath refid="gotozero.module.production.classpath"/>
+      <src refid="gotozero.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.gotozero"/>
+    </javac2>
+    
+    <copy todir="${gotozero.output.dir}">
+      <fileset dir="${module.gotozero.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.gotozero.tests" depends="register.custom.compilers,compile.module.gotozero.production" description="compile module GoToZero; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.gotozero" description="cleanup module">
+    <delete dir="${gotozero.output.dir}"/>
+    <delete dir="${gotozero.testoutput.dir}"/>
+  </target>
+</project>

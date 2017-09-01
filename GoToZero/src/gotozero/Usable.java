@@ -1,6 +1,8 @@
 package gotozero;
 
 
+import gotozero.ObjectGestion.Item;
+
 /**
  * Write a description of class Usable here.
  * 

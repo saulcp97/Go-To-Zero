@@ -5,6 +5,8 @@
  */
 package gotozero.Constructor;
 
+import gotozero.Monster;
+import gotozero.NPC;
 import gotozero.world;
 
 /**
@@ -19,15 +21,19 @@ public class Edify {
     1: casa con espacio minimo
     
     100: habitación de 20*20 * 8 + 2 Salida, la colocación del cubo padre se hará siguiendo el patron de coordenasdas de los cubos
-    
+    101: Habitación de pelea con Calorius 25 * 45 * 10 + 2 de salida
     
     
     84857: Torre de Babel
+    
+    243563: Neko Maid Coffe
+
+    
     1000000: Mansión colosal
     */
     public static void addHouse(world w,int Type, int x, int y, int z){
     switch(Type){           
-            case 0:
+        case 0:
                 
                 FillZone(5, 1, x - 10, y - 5, x + 5, y - 5, z, w);
                 
@@ -77,10 +83,75 @@ public class Edify {
                         }
                     }
                 }             
-                break;   
+                break;
+
+        case 101:
+            //Construcción de Habitación
+            for(int j = 0; j < 10; ++j) {
+                for(int i = 0; i < 25; ++i){
+                    w.addToWorld(x + i * 5, y, z + j * 5, 1);
+                }
+                for(int i = 0; i < 44; ++i) {
+                    w.addToWorld(x, y + i * 5, z + j * 5, 1);
+                    w.addToWorld(x + 120, y + i * 5, z + j * 5, 1);
+                }
+                for(int i = 0; i < 23; ++i){
+                    if(j > 2 || (i != 10 && i != 11 && i != 12)){
+                        w.addToWorld(x + 5 + i * 5, y + 215, z + j * 5, 1);
+                    }
+                }
+            }
+            Monster recurso = new Monster((byte) 0, "Calorius", "BOSS");
+            recurso.reubicar(x * (64/5) + (11 * 64), y*(64/5) + 64,641);
+            //Adición de Calorius;
+            w.addMonster(recurso);
+
+            break;
+
+
+
             case 84857://Babel Tower!
                 
                 break;
+                
+            case 243563:
+                //SUelo 15 * 10
+                FillZone(5, 5, x, y, x + 70, y + 45, z, w);
+                
+                //Muro Norte
+                FillZone(5, 7, x, y, x + 70, y, z + 5, w);
+                FillZone(5, 8, x, y, x + 70, y, z + 10, w);
+                FillZone(5, 8, x, y, x + 70, y, z + 15, w);
+                
+                //Muro Oeste
+                FillZone(5, 7, x, y + 5, x, y + 40, z + 5, w);
+                FillZone(5, 8, x, y + 5, x, y + 40, z + 10, w);
+                FillZone(5, 8, x, y + 5, x, y + 40, z + 15, w);
+
+                //Muro Este
+                FillZone(5, 7, x + 70, y + 5, x + 70, y + 40, z + 5, w);
+                FillZone(5, 8, x + 70, y + 5, x + 70, y + 40, z + 10, w);
+                FillZone(5, 8, x + 70, y + 5, x + 70, y + 40, z + 15, w);
+                
+                //Muro Sur
+                FillZone(5, 10, x, y + 45, x + 20, y + 45, z + 5, w);
+                FillZone(5, 10, x + 30, y + 45, x + 70, y + 45, z + 5, w);
+                
+                FillZone(5, 11, x, y + 45, x + 20, y + 45, z + 10, w);
+                FillZone(5, 11, x + 30, y + 45, x + 70, y + 45, z + 10, w);
+                
+                FillZone(5, 11, x, y + 45, x + 70, y + 45, z + 15, w);
+
+                
+                //Equipamiento de Cafeteria
+                w.addToWorld(x + 10, y + 10, z + 5, 9);
+                w.addToWorld(x + 10, y + 30, z + 5, 9);
+                w.addToWorld(x + 30, y + 10, z + 5, 9);
+                w.addToWorld(x + 30, y + 30, z + 5, 9);
+
+                
+                w.addNPC(new NPC("img/NekoMaid1.png", "Mimi: Gerente de Neko Maid Coffe",(byte) 0, x + 27, y + 10, z + 5));
+                break;   
             case 1000000://Mansion  51 * 51 10
                 
 //--------------Suelo Mansión--------------------

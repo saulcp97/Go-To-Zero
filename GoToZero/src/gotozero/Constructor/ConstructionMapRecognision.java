@@ -21,13 +21,12 @@ public class ConstructionMapRecognision {
     }
     
     private static Image load(String r){
-         try {
-              return ImageIO.read(ConstructionMapRecognision.class.getResource(r));
-            } catch (IOException ex) {
-                // handle exception...
-            }
-            return null;
-        
+        try {
+            return ImageIO.read(ConstructionMapRecognision.class.getResource(r));
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return null;
     }
     
     public static void recognise(String readImg){

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="GoToZero:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/GoToZero_jar</output-path>
+    <root id="archive" name="GoToZero.jar">
+      <element id="module-output" name="GoToZero" />
+    </root>
+  </artifact>
+</component>

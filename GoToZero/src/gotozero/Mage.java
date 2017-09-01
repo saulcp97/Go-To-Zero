@@ -1,5 +1,9 @@
 package gotozero;
 
+import gotozero.Constructor.Negocios.Negocio;
+import gotozero.ObjectGestion.Equipo;
+import gotozero.ObjectGestion.ManejadorDeItems;
+
 import java.awt.Image;
 /**
  * Write a description of class Mage here.
@@ -10,15 +14,33 @@ import java.awt.Image;
 public class Mage extends lifes {
     private final byte Genero;
     private sprite Sprite;
-    
+    private Equipo Equipamiento;
+
+    private Monster pet;
+    private Negocio empresa;
+
     public Mage(byte g) {
         super((byte)0,0,1024,1024);    
         this.Genero = g;
+        this.empresa = null;
         this.Sprite = new sprite(this);
         this.Sprite.setOutput(this.dir);
         this.Inventario.makeLink(this);
+        this.Equipamiento = new Equipo(this.estadisticas);
+        this.Equipamiento.equipar(ManejadorDeItems.getEquipBase(0));
+        this.Equipamiento.equipar(ManejadorDeItems.getEquipBase(1));
+        this.Equipamiento.equipar(ManejadorDeItems.getEquipBase(2));
+        this.Equipamiento.equipar(ManejadorDeItems.getEquipBase(3));
     }
-    
+
+
+    public Stadistic getEstadisticas() { return this.estadisticas; }
+    public Equipo getEquipamiento() { return this.Equipamiento; }
+    public int getVida() { return this.estadisticas.getVida(); }
+    public int getMaxVida() { return this.estadisticas.getMaxVida(); }
+    public void setEmpresa(Negocio trabajo){ this.empresa = trabajo; }
+    public Negocio getEmpresa(){ return this.empresa; }
+
     public String getGenero() {
         String res = "";
         if (this.Genero < 0) {
@@ -44,11 +66,13 @@ public class Mage extends lifes {
         entry.setImg(this.Sprite.getImg());
         entry.setSection(1, 1, 1);
     }
-    
+
+    @Override
     public void setDir(byte i){
         if(dir != i) {
             this.dir = i;
             this.Sprite.setOutput(i);
         }
     }
+
 }

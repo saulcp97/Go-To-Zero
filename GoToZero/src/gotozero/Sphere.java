@@ -41,6 +41,13 @@ public class Sphere extends v3{
         this.velo.setZ(v3);
     }
     
+    public void modifyVelo(double f){
+        this.velo.setX((int)(this.velo.x * f));
+        this.velo.setY((int)(this.velo.y * f));
+        this.velo.setZ((int)(this.velo.z * f));
+    }
+    
+    
     public void move(){
         this.x += this.velo.getX();
         this.y += this.velo.getY();

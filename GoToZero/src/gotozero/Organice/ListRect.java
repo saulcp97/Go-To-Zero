@@ -52,10 +52,8 @@ public class ListRect implements gotozero.Organice.ListaEnCola{
                 this.Ultimo.setData((Actualizable) i);
             }
         }
-        
         ++this.length;
     }
-    
     
     @Override
     public String toString(){
