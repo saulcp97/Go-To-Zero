@@ -6,7 +6,28 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5205c56-798d-4faa-85e0-5f4c42c8421d" name="Default" comment="" />
+    <list default="true" id="f5205c56-798d-4faa-85e0-5f4c42c8421d" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/GoToZero_jar/GoToZero.jar" afterPath="$PROJECT_DIR$/out/artifacts/GoToZero_jar/GoToZero.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GoToZero/gotozero/Block.class" afterPath="$PROJECT_DIR$/out/production/GoToZero/gotozero/Block.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GoToZero/gotozero/Constructor/Negocios/Negocio.class" afterPath="$PROJECT_DIR$/out/production/GoToZero/gotozero/Constructor/Negocios/Negocio.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GoToZero/gotozero/Hilo.class" afterPath="$PROJECT_DIR$/out/production/GoToZero/gotozero/Hilo.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GoToZero/gotozero/Menus.class" afterPath="$PROJECT_DIR$/out/production/GoToZero/gotozero/Menus.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GoToZero/gotozero/NPC.class" afterPath="$PROJECT_DIR$/out/production/GoToZero/gotozero/NPC.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GoToZero/gotozero/PantallaOut$MyKeyListener.class" afterPath="$PROJECT_DIR$/out/production/GoToZero/gotozero/PantallaOut$MyKeyListener.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GoToZero/gotozero/PantallaOut$MyMouseListener.class" afterPath="$PROJECT_DIR$/out/production/GoToZero/gotozero/PantallaOut$MyMouseListener.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GoToZero/gotozero/sprite.class" afterPath="$PROJECT_DIR$/out/production/GoToZero/gotozero/sprite.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GoToZero/gotozero/world.class" afterPath="$PROJECT_DIR$/out/production/GoToZero/gotozero/world.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GoToZero/gotozero/txt/objects/sake.txt" afterPath="$PROJECT_DIR$/out/production/GoToZero/gotozero/txt/objects/sake.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gotozero/Block.java" afterPath="$PROJECT_DIR$/src/gotozero/Block.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gotozero/Constructor/Negocios/Negocio.java" afterPath="$PROJECT_DIR$/src/gotozero/Constructor/Negocios/Negocio.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gotozero/Hilo.java" afterPath="$PROJECT_DIR$/src/gotozero/Hilo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gotozero/Menus.java" afterPath="$PROJECT_DIR$/src/gotozero/Menus.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gotozero/NPC.java" afterPath="$PROJECT_DIR$/src/gotozero/NPC.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gotozero/PantallaOut.java" afterPath="$PROJECT_DIR$/src/gotozero/PantallaOut.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gotozero/sprite.java" afterPath="$PROJECT_DIR$/src/gotozero/sprite.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gotozero/world.java" afterPath="$PROJECT_DIR$/src/gotozero/world.java" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,8 +46,8 @@
       <file leaf-file-name="Negocio.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gotozero/Constructor/Negocios/Negocio.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="79" column="0" lean-forward="false" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+            <state relative-caret-position="17">
+              <caret line="66" column="19" lean-forward="false" selection-start-line="66" selection-start-column="19" selection-end-line="66" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -35,8 +56,8 @@
       <file leaf-file-name="Menus.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gotozero/Menus.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="467">
-              <caret line="636" column="0" lean-forward="true" selection-start-line="636" selection-start-column="0" selection-end-line="636" selection-end-column="0" />
+            <state relative-caret-position="448">
+              <caret line="543" column="9" lean-forward="true" selection-start-line="543" selection-start-column="9" selection-end-line="543" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -45,8 +66,8 @@
       <file leaf-file-name="NPC.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gotozero/NPC.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+            <state relative-caret-position="399">
+              <caret line="121" column="40" lean-forward="false" selection-start-line="121" selection-start-column="40" selection-end-line="121" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -55,7 +76,7 @@
       <file leaf-file-name="Trabajador.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gotozero/Personas/Trabajador.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
+            <state relative-caret-position="17">
               <caret line="74" column="34" lean-forward="false" selection-start-line="74" selection-start-column="34" selection-end-line="74" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -67,28 +88,50 @@
       <file leaf-file-name="PantallaOut.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gotozero/PantallaOut.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="209" column="106" lean-forward="false" selection-start-line="209" selection-start-column="106" selection-end-line="209" selection-end-column="106" />
+            <state relative-caret-position="-1649">
+              <caret line="49" column="0" lean-forward="true" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cam.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gotozero/cam.java">
+      <file leaf-file-name="Cliente.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/gotozero/Personas/Cliente.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1173">
-              <caret line="69" column="0" lean-forward="false" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+            <state relative-caret-position="192">
+              <caret line="15" column="30" lean-forward="true" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="world.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gotozero/world.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3434">
+              <caret line="211" column="9" lean-forward="false" selection-start-line="211" selection-start-column="9" selection-end-line="211" selection-end-column="9" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sprite.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/gotozero/sprite.java">
+      <file leaf-file-name="Hilo.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gotozero/Hilo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="118" column="43" lean-forward="false" selection-start-line="118" selection-start-column="43" selection-end-line="118" selection-end-column="43" />
+            <state relative-caret-position="544">
+              <caret line="34" column="4" lean-forward="false" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Block.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gotozero/Block.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2652">
+              <caret line="157" column="73" lean-forward="false" selection-start-line="151" selection-start-column="8" selection-end-line="157" selection-end-column="73" />
               <folding />
             </state>
           </provider>
@@ -112,7 +155,6 @@
       <find>estado</find>
       <find>grade</find>
       <find>dir</find>
-      <find>addN</find>
       <find>setD</find>
       <find>getMageL</find>
       <find>Menu</find>
@@ -132,6 +174,7 @@
       <find>toPaint</find>
       <find>ini</find>
       <find>this.name</find>
+      <find>addN</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -148,7 +191,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/gotozero/algoritmos/searchDialog.java" />
         <option value="$PROJECT_DIR$/src/gotozero/Constructor/Edify.java" />
         <option value="$PROJECT_DIR$/src/gotozero/Inventary.java" />
         <option value="$PROJECT_DIR$/src/gotozero/Equipo.java" />
@@ -183,22 +225,23 @@
         <option value="$PROJECT_DIR$/src/gotozero/ObjectGestion/Inventary.java" />
         <option value="$PROJECT_DIR$/src/gotozero/txt/objects/historyCat.txt" />
         <option value="$PROJECT_DIR$/src/gotozero/cam.java" />
-        <option value="$PROJECT_DIR$/src/gotozero/Block.java" />
-        <option value="$PROJECT_DIR$/src/gotozero/sprite.java" />
         <option value="$PROJECT_DIR$/src/Algorithm/experimentByte.java" />
-        <option value="$PROJECT_DIR$/src/gotozero/Hilo.java" />
-        <option value="$PROJECT_DIR$/src/gotozero/world.java" />
         <option value="$PROJECT_DIR$/src/Algorithm/ConversioTxtToByte.java" />
         <option value="$PROJECT_DIR$/src/gotozero/Constructor/ConstructionMapRecognision.java" />
         <option value="$PROJECT_DIR$/src/gotozero/ObjectGestion/Item.java" />
         <option value="$PROJECT_DIR$/src/gotozero/Constructor/CityMaker.java" />
         <option value="$PROJECT_DIR$/src/concurrenciaTest/test.java" />
-        <option value="$PROJECT_DIR$/src/gotozero/NPC.java" />
         <option value="$PROJECT_DIR$/src/gotozero/Personas/Trabajador.java" />
-        <option value="$PROJECT_DIR$/src/gotozero/Menus.java" />
-        <option value="$PROJECT_DIR$/src/gotozero/Constructor/Negocios/Negocio.java" />
-        <option value="$PROJECT_DIR$/src/gotozero/PantallaOut.java" />
         <option value="$PROJECT_DIR$/src/gotozero/txt/objects/sake.txt" />
+        <option value="$PROJECT_DIR$/src/gotozero/sprite.java" />
+        <option value="$PROJECT_DIR$/src/gotozero/Block.java" />
+        <option value="$PROJECT_DIR$/src/gotozero/Constructor/Negocios/Negocio.java" />
+        <option value="$PROJECT_DIR$/src/gotozero/NPC.java" />
+        <option value="$PROJECT_DIR$/src/gotozero/world.java" />
+        <option value="$PROJECT_DIR$/src/gotozero/Personas/Cliente.java" />
+        <option value="$PROJECT_DIR$/src/gotozero/Hilo.java" />
+        <option value="$PROJECT_DIR$/src/gotozero/PantallaOut.java" />
+        <option value="$PROJECT_DIR$/src/gotozero/Menus.java" />
       </list>
     </option>
   </component>
@@ -229,9 +272,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -262,21 +303,15 @@
               <item name="GoToZero" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="gotozero" type="462c0819:PsiDirectoryNode" />
-              <item name="txt" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GoToZero" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GoToZero" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="gotozero" type="462c0819:PsiDirectoryNode" />
-              <item name="txt" type="462c0819:PsiDirectoryNode" />
-              <item name="objects" type="462c0819:PsiDirectoryNode" />
+              <item name="Personas" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -621,6 +656,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -667,20 +703,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/gotozero/ObjectGestion/Equipamiento.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="935">
-          <caret line="57" column="88" lean-forward="false" selection-start-line="57" selection-start-column="88" selection-end-line="57" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gotozero/UI/InterfazUsuario.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="884">
-          <caret line="55" column="36" lean-forward="false" selection-start-line="55" selection-start-column="36" selection-end-line="55" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gotozero/Organice/ListRect.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1241">
@@ -789,14 +811,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gotozero/Block.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="549">
-          <caret line="168" column="22" lean-forward="true" selection-start-line="168" selection-start-column="22" selection-end-line="168" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gotozero/Rect.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
@@ -846,32 +860,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gotozero/lifes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="142" column="9" lean-forward="false" selection-start-line="142" selection-start-column="9" selection-end-line="142" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gotozero/world.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="138" column="46" lean-forward="false" selection-start-line="138" selection-start-column="46" selection-end-line="138" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gotozero/Hilo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2008">
-          <caret line="163" column="30" lean-forward="true" selection-start-line="163" selection-start-column="30" selection-end-line="163" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gotozero/ObjectGestion/ManejadorDeItems.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -897,7 +885,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
           <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -905,7 +892,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="986">
           <caret line="76" column="56" lean-forward="false" selection-start-line="76" selection-start-column="56" selection-end-line="76" selection-end-column="56" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -983,29 +969,73 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1173">
           <caret line="69" column="0" lean-forward="false" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gotozero/txt/objects/sake.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="97" lean-forward="false" selection-start-line="2" selection-start-column="97" selection-end-line="2" selection-end-column="97" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gotozero/sprite.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/jre/lib/rt.jar!/java/awt/event/MouseListener.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="14" column="9" lean-forward="false" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gotozero/lifes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2176">
+          <caret line="142" column="9" lean-forward="false" selection-start-line="142" selection-start-column="9" selection-end-line="142" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gotozero/Block.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2652">
+          <caret line="157" column="73" lean-forward="false" selection-start-line="151" selection-start-column="8" selection-end-line="157" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gotozero/world.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3434">
+          <caret line="211" column="9" lean-forward="false" selection-start-line="211" selection-start-column="9" selection-end-line="211" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gotozero/Hilo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="34" column="4" lean-forward="false" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gotozero/NPC.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gotozero/Menus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="636" column="0" lean-forward="true" selection-start-line="636" selection-start-column="0" selection-end-line="636" selection-end-column="0" />
+        <state relative-caret-position="399">
+          <caret line="121" column="40" lean-forward="false" selection-start-line="121" selection-start-column="40" selection-end-line="121" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gotozero/Personas/Trabajador.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
+        <state relative-caret-position="17">
           <caret line="74" column="34" lean-forward="false" selection-start-line="74" selection-start-column="34" selection-end-line="74" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1015,33 +1045,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gotozero/Constructor/Negocios/Negocio.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="79" column="0" lean-forward="false" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+        <state relative-caret-position="17">
+          <caret line="66" column="19" lean-forward="false" selection-start-line="66" selection-start-column="19" selection-end-line="66" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gotozero/PantallaOut.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="209" column="106" lean-forward="false" selection-start-line="209" selection-start-column="106" selection-end-line="209" selection-end-column="106" />
+        <state relative-caret-position="-1649">
+          <caret line="49" column="0" lean-forward="true" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gotozero/txt/objects/sake.txt">
+    <entry file="file://$PROJECT_DIR$/src/gotozero/Menus.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="97" lean-forward="false" selection-start-line="2" selection-start-column="97" selection-end-line="2" selection-end-column="97" />
+        <state relative-caret-position="448">
+          <caret line="543" column="9" lean-forward="true" selection-start-line="543" selection-start-column="9" selection-end-line="543" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gotozero/sprite.java">
+    <entry file="file://$PROJECT_DIR$/src/gotozero/Personas/Cliente.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="118" column="43" lean-forward="false" selection-start-line="118" selection-start-column="43" selection-end-line="118" selection-end-column="43" />
-          <folding />
+        <state relative-caret-position="192">
+          <caret line="15" column="30" lean-forward="true" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

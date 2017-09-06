@@ -30,7 +30,6 @@ public class sprite
     public static final sprite ConPollo = new sprite("img/alitaDePollo.PNG");
     public static final sprite SinPollo = new sprite("img/alitaDePolloSinPollo.png");
 
-
     public static final sprite BaseMuroMaid = new sprite("img/baseMuroMaidCaffe.png");
     public static final sprite MuroMaid = new sprite("img/muroMaidCafe.png");
     public static final sprite Mesa = new sprite("img/mesa.png");
@@ -44,7 +43,6 @@ public class sprite
 
 
     public static final sprite TiendaOtakuTacanyo = new sprite("img/vendedor.png");
-
     public static final BufferedImage imgMuroPiedra = sprite.MuroPiedra.getImg();
     
     /**
@@ -54,7 +52,6 @@ public class sprite
         this.ruta = new String[1];
         this.ruta[0] = "/img";
     }
-
 
     public sprite(String rut) {
         this.ruta = new String[1];
@@ -72,7 +69,6 @@ public class sprite
             this.ImagePanel(this.ruta[0],i);
         }
     }
-
 
     public sprite(Mage mago) {
         this.ruta = new String[8];
@@ -133,10 +129,4 @@ public class sprite
     public BufferedImage getImg() {
         return this.Output;
     }
-
-
-
-
-
-
 }

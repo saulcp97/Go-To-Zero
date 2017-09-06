@@ -207,13 +207,12 @@ public final class world {
         this.VillagePeople = listaVip;
 
         Block[] lBloques = new Block[this.Interactuable.length + 1];
-
         for(int i = 0; i < this.Interactuable.length; ++i) {
             lBloques[i] = this.Interactuable[i];
         }
         lBloques[this.Interactuable.length] = n;
         this.Interactuable = lBloques;
-        addToWorld(n);
+        //addToWorld(n);
     }
 
     public void addMonster(Monster n) {
@@ -504,6 +503,7 @@ public final class world {
         return this.byMap;
     }
 
+    public int getHabitantsNumber() {return this.VillagePeople.length; }
     public Magia[] getHechizos() { 
         return this.hechizos;
     }

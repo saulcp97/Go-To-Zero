@@ -67,6 +67,7 @@ public class Block extends v3 implements Comparable<Block>,Serializable{
         super();
         this.Tipo = t;
         switch(this.Tipo){
+            case 0:
             case 1:
             case 2:
             case 3:

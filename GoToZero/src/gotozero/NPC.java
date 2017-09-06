@@ -120,7 +120,6 @@ public class NPC extends Creatures{
         re.setWidth(this.TamanyoX);
         re.setHeight(this.TamanyoY);
         re.setImg(this.Sprite.getImg());
-        
         re.setSection(1, 1, 1);
     } 
 }

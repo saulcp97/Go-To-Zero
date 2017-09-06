@@ -193,7 +193,7 @@ public class PantallaOut extends JFrame{
                         ListInput.CarryMarcador();
                     }
 
-                    Negocio.drawCursorCompra(gAux,((Camara.getXRest() + Camara.getMouseX() + 32) / 64) * 5, ((Camara.getMouseY() + Camara.getYRest() + 32) / 64) * 5,5, Camara);
+                    Menus.drawMenuConstruccion(gAux, Camara);
 
                     if(Menus.InventarioNegocio.getVisibility()) {
                         Menus.drawMenuInventarioNegocio(gAux, Camara);
@@ -299,12 +299,13 @@ public class PantallaOut extends JFrame{
                 if (Menus.ContratacionTrabajadores.getVisibility()) {
                     Menus.ContratacionTrabajadores.click(Camara,me.getX(),me.getY());
                 }
+                teclado += 0b10000;
             }
         }
         @Override
         public void mousePressed(MouseEvent me) {
             if(SwingUtilities.isLeftMouseButton(me)){
-                if(EstadoMaquina == 2 || EstadoMaquina == -34) {
+                if(EstadoMaquina == 2) {
                     if((teclado & 0b10000) == 0) {
                         teclado += 0b10000;
                     }
@@ -315,7 +316,7 @@ public class PantallaOut extends JFrame{
         @Override
         public void mouseReleased(MouseEvent me) {
             if(SwingUtilities.isLeftMouseButton(me)){
-                if(EstadoMaquina == 2 || EstadoMaquina == -34) {
+                if(EstadoMaquina == 2) {
                     if((teclado & 0b10000) == 0b10000) {
                         teclado -= 0b10000;
                     }

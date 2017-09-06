@@ -1,6 +1,7 @@
 package gotozero.Constructor.Negocios;
 
 import gotozero.Alimento;
+import gotozero.Block;
 import gotozero.ObjectGestion.Item;
 import gotozero.Personas.Trabajador;
 import gotozero.cam;
@@ -11,6 +12,8 @@ import java.awt.*;
 public class Negocio {
     private String Name;
     private long Presupuesto;
+
+    private Block SpawnClients;
 
     private static Item[] ListaDisponibles;
     private int[] ContabilidadExistencias;
@@ -55,10 +58,8 @@ public class Negocio {
         //Prueba de funcionamiento correcto
         for(int i = 0; i < this.ContabilidadExistencias.length; ++i) {
             this.ContabilidadExistencias[i] = i;
-
         }
-
-
+        this.SpawnClients = new Block(0,0,5,(byte)0);
     }
 
     public void act(int index, byte code) {
@@ -69,12 +70,8 @@ public class Negocio {
         }
     }
 
-
-
+    public Block getSpawnClients() { return SpawnClients; }
     public void conversion(int indexMateria, int indexProduct) {
-
-
-
 
     }
 
@@ -99,6 +96,8 @@ public class Negocio {
         Trabajador[] aux = new Trabajador[this.ListaEmpleados.length + 1];
         for (int i = 0; i < this.ListaEmpleados.length; ++i) {
             aux[i] = this.ListaEmpleados[i];
+
+
         }
         aux[aux.length - 1] = novato;
         this.ListaEmpleados = aux;

@@ -2,6 +2,7 @@ package gotozero;
 
 import gotozero.Constructor.CityMaker;
 import gotozero.Constructor.Negocios.Negocio;
+import gotozero.Personas.Cliente;
 
 /**
  * Write a description of class Hilo here.
@@ -100,8 +101,12 @@ public class Hilo extends Thread{
                 long init = System.nanoTime();
                 switch(this.EstadoMaquina){
                     case -34: //Modo MimiCoffe
+
                         this.Camara.actualMouse();
                         this.World.setInput(this.frame.teclado);
+                        if (this.World.getHabitantsNumber() == 0) {
+                            this.World.addNPC(new Cliente(this.player.getEmpresa().getSpawnClients()));
+                        }
                         this.World.liveCicle();
 
                         switch((this.frame.teclado & 0b00001111)) {
@@ -150,13 +155,13 @@ public class Hilo extends Thread{
 
                         if((this.frame.teclado & 0b10000) == 0b10000) {
                             Camara.actualMouse();
-
                             Block insertacion = new Block(((this.Camara.getXRest() + this.Camara.getMouseX() + 32) / 64) * 5, ((this.Camara.getMouseY() + this.Camara.getYRest() + 32) / 64) * 5, 5, (byte)5);
                             //this.World.addNPC(new NPC("img/Ciel.png", "Ciel Iris", (byte)1,((this.Camara.getMouseX())/64)*5,((this.Camara.getMouseY())/64)*5,7));
                             if(this.World.isInsertable(insertacion)) {
                                 this.World.addToWorld(insertacion);
                                 System.out.println("X: " + ((this.Camara.getXRest() + this.Camara.getMouseX()) / 64) * 5 + " Y: " + ((this.Camara.getMouseY() + this.Camara.getYRest()) / 64) * 5);
                             }
+                            this.frame.teclado -= 0b10000;
                         }
 
                         this.World.actualToPaint(this.Camara.getXRest(),this.Camara.getYRest(),this.Camara.getWidth(),this.Camara.getHeight());

@@ -47,10 +47,10 @@ public class Menus <E> {
 
     static Menus Inventario = new Menus ((byte) 0);
     static Menus Personaje = new Menus ((byte) 1);
-
     static Menus InventarioNegocio = new Menus((byte) 2);
-
     static Menus ContratacionTrabajadores = new Menus((byte) 5);
+    static Menus Construccion = new Menus((byte) 6);
+
 
     public static Menus InfoObjetos = null;
     static Menus selectedOpened = null;
@@ -69,7 +69,7 @@ public class Menus <E> {
      * Tipo 3 -> Informacion de Un Objeto/Item en todos los modos
      * Tipo 4 -> Menu de empleados del Negocio
      * Tipo 5 -> Menu de contratacion de Empleados
-     *
+     * Tipo 6 -> Menu de construccion
      *
      * Tipo 99 -> Selector de Opciones
      * Tipo 100 -> Selecciones binarias si/no
@@ -205,6 +205,25 @@ public class Menus <E> {
                 this.Puntero.setImg(new sprite("img/selected.png").getImg());
                 break;
 
+            case 6:
+                this.x = 0;
+                this.y = 0;
+
+                this.width = 512;
+                this.height = 64;
+
+                this.filas = 1;
+                this.columnas = 5;
+
+                this.desp = 0;
+
+                this.Conjuntos = new Rect[8];
+                this.Conjuntos[0] = new Rect(x,y,64,64,99);
+                this.Conjuntos[0].setImg(new sprite("img/modoConstruccion.png").getImg());
+
+                this.Puntero = new Rect(x,y,64,64,99);
+                this.Puntero.setImg(new sprite("img/selected.png").getImg());
+                break;
         }
     }
 
@@ -514,6 +533,17 @@ public class Menus <E> {
         }
     }
 
+    static void drawMenuConstruccion(Graphics g, cam Camara) {
+        Negocio.drawCursorCompra(g,((Camara.getXRest() + Camara.getMouseX() + 32) / 64) * 5, ((Camara.getMouseY() + Camara.getYRest() + 32) / 64) * 5,5, Camara);
+        Rect[] r = Menus.Construccion.toPaint();
+
+        g.drawImage(r[0].getOutput(),r[0].getX(), r[0].getY(),null);
+
+        if(Construccion.visible) {
+
+        }
+    }
+
     static void drawMenuContratacion(Graphics g, cam Camara) {
         Rect[] r = Menus.ContratacionTrabajadores.toPaint();
 
@@ -621,8 +651,6 @@ public class Menus <E> {
         g.drawString(Menus.InfoObjetos.description[2],Menus.InfoObjetos.Conjuntos[1].getWidth() + 8,Menus.InfoObjetos.Conjuntos[1].getHeight() + 58);
         g.drawString(Menus.InfoObjetos.description[3],Menus.InfoObjetos.Conjuntos[1].getWidth() + 8,Menus.InfoObjetos.Conjuntos[1].getHeight() + 74);
     }
-
-
 
     public void click(cam Camara, int X, int Y) {
         if(this.auxiliar.length > 0 && X == 0 && Y == 0) {
