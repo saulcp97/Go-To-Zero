@@ -15,11 +15,13 @@ public class Block3D {
 
     public static Texture[] textures = {
             new Texture(Gdx.files.internal("data/img/3dTexture/muroSimple.png")),
-//            new Texture(Gdx.files.internal("data/img/3dTexture/cespedSimple.png")),
+//          new Texture(Gdx.files.internal("data/img/3dTexture/cespedSimple.png")),
             new Texture(Gdx.files.internal("data/img/3dTexture/m1.png")),
-
             new Texture(Gdx.files.internal("data/img/3dTexture/baldosasCeramica.png")),
-            null, null, null, null, null, null, null,
+            new Texture(Gdx.files.internal("data/img/3dTexture/yuri.png")),
+            new Texture(Gdx.files.internal("data/img/3dTexture/abysmFloor.png")),
+            //Puede ayudar en el futuro: https://stackoverflow.com/questions/26518562/how-to-animate-textures-in-a-3d-model
+            null, null, null, null, null,
             new Texture(Gdx.files.internal("data/img/3dTexture/baseMuroMaidCaffe.png")),
             null,
             new Texture(Gdx.files.internal("data/img/3dTexture/muroExteriorCasita.png")),

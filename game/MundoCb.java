@@ -78,11 +78,10 @@ public class MundoCb {
         this.PunteroY = 0;
 
         this.db = false;
-
         this.message = "";
         this.finite = true;
-
         this.firm = "";
+        ProcGenerator.GenerateProc(this.chunks[PunteroX][PunteroY]);
 
     }
 
@@ -111,6 +110,7 @@ public class MundoCb {
         this.edifMundo(this.PunteroX,this.PunteroY);
         this.db = false;
         this.finite = false;
+
 
 
         this.firm = "";
@@ -146,7 +146,7 @@ public class MundoCb {
         //House.addPosition(this.chunks[px][py],10,20,0);
 
         for(int i = 0; i < 10; ++i) {
-            this.chunks[px][py].tryToAddEntity(new Wild(0, 0, 0, "Slime"), (int)(Math.random()*31), (int)(Math.random()*31), 1);
+     //       this.chunks[px][py].tryToAddEntity(new Wild(0, 0, 0, "Slime"), (int)(Math.random()*31), (int)(Math.random()*31), 1);
         }
 
         ProcGenerator.GenerateProc(this.chunks[px][py]);
@@ -170,20 +170,21 @@ public class MundoCb {
 
 
         //this.chunks[px][py].tryToAddEntity(new NPC("Clamsy"), (int)(Math.random()*31), (int)(Math.random()*31), 1);
-        this.chunks[px][py].tryToAddEntity(new NPC("Zombie"), (int)(Math.random()*31), (int)(Math.random()*31), 1);
-
-        this.chunks[px][py].tryToAddEntity(new NPC("Irisciel"), 7, 29, 1);
-        this.chunks[px][py].tryToAddEntity(new NPC("Phoenix"), 10, 16, 1);
-
+        //this.chunks[px][py].tryToAddEntity(new NPC("Zombie"), (int)(Math.random()*31), (int)(Math.random()*31), 1);
+        //this.chunks[px][py].tryToAddEntity(new NPC("Irisciel"), 7, 29, 1);
+        //this.chunks[px][py].tryToAddEntity(new NPC("Phoenix"), 10, 16, 1);
         //this.chunks[px][py].tryToAddEntity(new NPC("Hideki Seishisai"), 12, 29, 1);
+
+        this.chunks[px][py].tryToAddEntity(new NPC("TEOD"), 10, 16, 1);
+
         this.chunks[px][py].tryToAddBlock(new Escaleras((byte)0,(byte)2),1,31,1);
         this.chunks[px][py].tryToAddBlock(new Escaleras((byte)0,(byte)3),2,30,1);
         this.chunks[px][py].tryToAddBlock(new Escaleras((byte)0,(byte)1),1,22,3);
 
-        this.chunks[px][py].tryToAdd(2, 22, 3, (byte) 0);
-        this.chunks[px][py].tryToAdd(0, 22, 2, (byte) 0);
-        this.chunks[px][py].tryToAdd(0, 23, 2, (byte) 0);
-        this.chunks[px][py].tryToAdd(1, 24, 1, (byte) 0);
+        this.chunks[px][py].tryToAdd(2, 22, 3, (byte) 4);
+        this.chunks[px][py].tryToAdd(0, 22, 2, (byte) 4);
+        this.chunks[px][py].tryToAdd(0, 23, 2, (byte) 4);
+        this.chunks[px][py].tryToAdd(1, 24, 1, (byte) 4);
 
         this.chunks[px][py].tryToAddBlock(new Escaleras((byte)0,(byte)0),1,25,1);
 

@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.math.Frustum;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.math.collision.BoundingBox;
@@ -66,6 +67,8 @@ public class Chunk {
 
     private ArrayList<Entity> entities;
     private ArrayList<Entity> Postentities;
+
+    private ModelInstance[] printer;
 
     public Chunk() {
         this.x = 0;
@@ -314,7 +317,7 @@ public class Chunk {
                 }
             }
 
-            for (int k = 0; k < 32; ++k) {
+           /* for (int k = 0; k < 32; ++k) {
                 for (int i = 31; i >= 0; --i) {
                     for (int j = 0; j < 32; ++j) {
                         if (this.blocks[k * 32 * 32 + j * 32 + i] != null
@@ -328,11 +331,13 @@ public class Chunk {
                         }
                     }
                 }
-            }
+            }*/
             this.assignedR = true;
             if(this.player != null) {
                 this.player.loadModel(this.x, this.y);
+
             }
+            this.printer = Cardinal.buildModelChunk(this);
         }
 
         //instance.transform
@@ -340,7 +345,7 @@ public class Chunk {
         Vector3 auxiliar = new Vector3();
         //If direcciones, para organizar y aplicar
 
-        if(ahorro) {
+        /*if(ahorro) {
             for (int k = 0; k < 32; ++k) {
                 for (int i = 0; i < 32; ++i) {
                     for (int j = 0; j < 32; ++j) {
@@ -364,8 +369,10 @@ public class Chunk {
                     }
                 }
             }
+        }*/
+        for(int i =0; i < this.printer.length; ++i) {
+            worldBatch.renderG(this.printer[i]);
         }
-
 
         if(this.player != null) {
             worldBatch.renderG(player.getModelInstance());
@@ -748,7 +755,7 @@ public class Chunk {
                         }
                     }
                     for (int j = 0; !chocado && j < this.entities.size(); ++j) {
-                        if (this.entities.get(j).rectify(this.player, (byte) 2, this.player.advanceIntent[4])) {
+                       if (this.entities.get(j).rectify(this.player, (byte) 2, this.player.advanceIntent[4])) {
                             break;
                         }
                     }
@@ -829,9 +836,6 @@ public class Chunk {
                     }
                 }
             }
-            //System.out.println("Elementos (particulas incluidas) " + this.entities.size());
-
-            //QuickSort.QuickSort(this.entities,0,this.entities.length - 1);
         } else {
             int count = 0;
             for (Entity i : this.entities) {

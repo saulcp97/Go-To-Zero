@@ -281,27 +281,31 @@ public class Block {
                     Material material = this.modelInstance.materials.get(0);
                     switch (type) {
                         case 1:
-                            textures[1].setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+                            textures[1].setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
                             material.set(TextureAttribute.createDiffuse(textures[1]));
                             break;
                         case 2:
-                            textures[2].setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+                            textures[2].setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
                             material.set(TextureAttribute.createDiffuse(textures[2]));
                             break;
                         case 3:
-                            textures[3].setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+                            textures[3].setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
                             material.set(TextureAttribute.createDiffuse(textures[3]));
                             break;
+                        case 4:
+                            textures[4].setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
+                            material.set(TextureAttribute.createDiffuse(textures[4]));
+                            break;
                         case 10:
-                            textures[10].setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+                            textures[10].setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
                             material.set(TextureAttribute.createDiffuse(textures[10]));
                             break;
                         case 12:
-                            textures[12].setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+                            textures[12].setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
                             material.set(TextureAttribute.createDiffuse(textures[12]));
                             break;
                         case 14:
-                            textures[14].setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+                            textures[14].setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
                             material.set(TextureAttribute.createDiffuse(textures[14]));
                             break;
                     }
@@ -312,27 +316,27 @@ public class Block {
                     material = this.modelInstance.materials.get(0);
                     switch (type) {
                         case 1:
-                            textures[1].setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+                            textures[1].setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
                             material.set(TextureAttribute.createDiffuse(textures[1]));
                             break;
                         case 2:
-                            textures[2].setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+                            textures[2].setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
                             material.set(TextureAttribute.createDiffuse(textures[2]));
                             break;
                         case 3:
-                            textures[3].setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+                            textures[3].setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
                             material.set(TextureAttribute.createDiffuse(textures[3]));
                             break;
                         case 10:
-                            textures[10].setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+                            textures[10].setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
                             material.set(TextureAttribute.createDiffuse(textures[10]));
-                            break;
+                           break;
                         case 12:
-                            textures[12].setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+                            textures[12].setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
                             material.set(TextureAttribute.createDiffuse(textures[12]));
                             break;
                         case 14:
-                            textures[14].setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+                            textures[14].setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
                             material.set(TextureAttribute.createDiffuse(textures[14]));
                             break;
                     }

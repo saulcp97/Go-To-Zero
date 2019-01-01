@@ -2,13 +2,19 @@ package com.mygdx.game.Cubos.Entidades.vida.NPC;
 
 import com.badlogic.gdx.Files;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.VertexAttributes;
+import com.badlogic.gdx.graphics.g3d.Material;
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
+import com.badlogic.gdx.graphics.g3d.attributes.BlendingAttribute;
 import com.badlogic.gdx.graphics.g3d.attributes.TextureAttribute;
 import com.badlogic.gdx.graphics.g3d.loader.G3dModelLoader;
 import com.badlogic.gdx.graphics.g3d.loader.ObjLoader;
 import com.badlogic.gdx.graphics.g3d.utils.AnimationController;
+import com.badlogic.gdx.graphics.g3d.utils.MeshPartBuilder;
+import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 import com.badlogic.gdx.math.Quaternion;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.UBJsonReader;
@@ -409,6 +415,22 @@ public class NPC extends Life {
                 this.mod = new ModelInstance(NPC.PhoenixModel);
                 this.mod.transform.translate(this.coord.x / 64 + x * 32, this.coord.z / 64 + .5f, (31 - this.coord.y / 64) + ((2 - y) * 32));
                 //this.mod.materials.get(0).set(TextureAttribute.createDiffuse(new Texture(Gdx.files.internal("data/img/3dTexture/cespedSimple.png"))));
+                this.controller = new AnimationController(this.mod);
+                break;
+
+            case "TEOD":
+                ModelBuilder modelBuilder = new ModelBuilder();
+                modelBuilder.begin();
+                MeshPartBuilder meshBuilder;
+                Texture skin = new Texture(Gdx.files.internal("data/img/Sprites/aset1.png"));
+                skin.setFilter(Texture.TextureFilter.Linear,Texture.TextureFilter.Linear);
+                Material simple =  new Material(new BlendingAttribute(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA),TextureAttribute.createDiffuse(skin));
+
+                meshBuilder = modelBuilder.part("Frente", GL20.GL_TRIANGLES, VertexAttributes.Usage.Position | VertexAttributes.Usage.Normal | VertexAttributes.Usage.TextureCoordinates, simple);
+                meshBuilder.rect(0,0,0,1,0,0,1,2,0,0,2,0,0,0,1);
+
+                this.mod = new ModelInstance(modelBuilder.end());
+                this.mod.transform.translate(this.coord.x / 64 + x * 32, this.coord.z / 64 + .5f, (31 - this.coord.y / 64) + ((2 - y) * 32));
                 this.controller = new AnimationController(this.mod);
                 break;
 

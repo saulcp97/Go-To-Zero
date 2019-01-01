@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.VertexAttributes;
 import com.badlogic.gdx.graphics.g3d.Material;
 import com.badlogic.gdx.graphics.g3d.Model;
+import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.graphics.g3d.attributes.BlendingAttribute;
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
 import com.badlogic.gdx.graphics.g3d.attributes.TextureAttribute;
@@ -21,7 +22,11 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Pool;
 import com.badlogic.gdx.utils.XmlReader;
+import com.mygdx.game.Cubos.Block;
+import com.mygdx.game.Cubos.Decoration;
+import com.mygdx.game.Cubos.Deformed;
 import com.mygdx.game.Cubos.Entidades.bullet.Projectile;
+import com.mygdx.game.Cubos.Escaleras;
 import com.mygdx.game.simulation.Edification.ProcGenerator;
 import com.mygdx.game.simulation.Language;
 
@@ -326,7 +331,6 @@ public class Cardinal {
                             ColorAttribute.createDiffuse(Color.FIREBRICK.r,Color.FIREBRICK.g,Color.FIREBRICK.b,.5f)),
                     VertexAttributes.Usage.Position  | VertexAttributes.Usage.TextureCoordinates);
 
-
     public static boolean containsNumber(final byte[] array, final byte v) {
         boolean result = false;
         for(int i : array){
@@ -382,4 +386,102 @@ public class Cardinal {
         return modelBuilder.end();
     }
 
+    public static ModelInstance[] buildModelChunk(Chunk ch) {
+        ArrayList<ModelInstance> res = new ArrayList<>();
+
+        Block[] bl = ch.getBlocks();
+
+        ModelBuilder modelBuilder = new ModelBuilder();
+        modelBuilder.begin();
+
+        Texture abism =(new Texture(Gdx.files.internal("data/img/3dTexture/baseMuroMaidCaffeExterior.png")));
+        abism.setFilter(Texture.TextureFilter.Nearest,Texture.TextureFilter.Nearest);
+
+        MeshPartBuilder meshBuilder;
+        Material simple;
+
+        Material[] materials = new Material[128];
+        for(int i = 0; i < materials.length; ++i) {
+            materials[i] = new Material(ColorAttribute.createDiffuse(i/128f, i/128f, i/128f,1));
+        }
+
+        for (int i = 0; i < 32; ++i) {
+            for (int j = 0; j < 32; ++j) {
+                for(int k = 0; k < 32; ++k) {
+                    if(bl[i + j*32 + k*32*32] != null){
+                        Block b = bl[i + j*32 + k*32*32];
+                        if(!(b instanceof Escaleras || b instanceof Decoration || b instanceof Deformed)) {
+                            if(true) { //Poner condiciones generales para limitar la creación de cosas
+                                simple = materials[b.getType()];
+                                meshBuilder = modelBuilder.part("C" + (i + j*32 + k*32*32), GL20.GL_TRIANGLES, VertexAttributes.Usage.Position | VertexAttributes.Usage.Normal | VertexAttributes.Usage.TextureCoordinates, simple);
+                                if (i == 0 || bl[(i - 1) + j * 32 + k * 32 * 32] == null
+                                        || bl[(i - 1) + j * 32 + k * 32 * 32] instanceof Escaleras
+                                        || bl[(i - 1) + j * 32 + k * 32 * 32] instanceof Decoration
+                                        || bl[(i - 1) + j * 32 + k * 32 * 32] instanceof Deformed) {
+                                    //OESTE
+                                    meshBuilder.rect(i + 0, k + 0, j + 1, i + 0, k + 1, j + 1, i + 0, k + 1, j + 0, i + 0, k + 0, j + 0, -1, 0, 0);
+                                }
+                                if (i == 31 || bl[(i + 1) + j * 32 + k * 32 * 32] == null
+                                        || bl[(i + 1) + j * 32 + k * 32 * 32] instanceof Escaleras
+                                        || bl[(i + 1) + j * 32 + k * 32 * 32] instanceof Decoration
+                                        || bl[(i + 1) + j * 32 + k * 32 * 32] instanceof Deformed) {
+                                    //ESTE
+                                    meshBuilder.rect(i + 1, k + 0, j + 0, i + 1, k + 1, j + 0, i + 1, k + 1, j + 1, i + 1, k + 0, j + 1, 1, 0, 0);
+                                }
+                                if (j == 0 || bl[i + (j - 1) * 32 + k * 32 * 32] == null
+                                        || bl[i + (j - 1) * 32 + k * 32 * 32] instanceof Escaleras
+                                        || bl[i + (j - 1) * 32 + k * 32 * 32] instanceof Decoration
+                                        || bl[i + (j - 1) * 32 + k * 32 * 32] instanceof Deformed) {
+                                    //NORTE
+                                    meshBuilder.rect(i + 0, k + 0, j + 0, i + 0, k + 1, j + 0, i + 1, k + 1, j + 0, i + 1, k + 0, j + 0, 0, 0, -1);
+                                }
+                                if (j == 31 || bl[i + (j + 1) * 32 + k * 32 * 32] == null
+                                        || bl[i + (j + 1) * 32 + k * 32 * 32] instanceof Escaleras
+                                        || bl[i + (j + 1) * 32 + k * 32 * 32] instanceof Decoration
+                                        || bl[i + (j + 1) * 32 + k * 32 * 32] instanceof Deformed) {
+                                    //SUR
+                                    meshBuilder.rect(i + 1, k + 0, j + 1, i + 1, k + 1, j + 1, i + 0, k + 1, j + 1, i + 0, k + 0, j + 1, 0, 0, 1);
+                                }
+                                if (k == 0 || bl[i + j * 32 + (k - 1) * 32 * 32] == null
+                                        || bl[i + j * 32 + (k - 1) * 32 * 32] instanceof Escaleras
+                                        || bl[i + j * 32 + (k - 1) * 32 * 32] instanceof Decoration
+                                        || bl[i + j * 32 + (k - 1) * 32 * 32] instanceof Deformed) {
+                                    //Abajo
+                                    meshBuilder.rect(i + 1, k + 0, j + 0, i + 1, k + 0, j + 1, i + 0, k + 0, j + 1, i + 0, k + 0, j + 0, 0, -1, 0);
+                                }
+
+                                if (k == 31 || bl[i + j * 32 + (k + 1) * 32 * 32] == null
+                                        || bl[i + j * 32 + (k + 1) * 32 * 32] instanceof Escaleras
+                                        || bl[i + j * 32 + (k + 1) * 32 * 32] instanceof Decoration
+                                        || bl[i + j * 32 + (k + 1) * 32 * 32] instanceof Deformed) {
+                                    //Arriba
+                                    meshBuilder.rect(i + 1, k + 1, j + 1, i + 1, k + 1, j + 0, i + 0, k + 1, j + 0, i + 0, k + 1, j + 1, 0, 1, 0);
+                                }
+                            }
+
+                        } else {
+                            res.add(b.getModelInstance());
+                        }
+                    }
+                }
+            }
+        }
+
+        ModelInstance aux = new ModelInstance(modelBuilder.end());
+        aux.transform.translate(ch.getX()*32 +.5f, .5f,((2 - ch.getY()) * 32) -.5f);
+
+        /*
+
+       this.modelInstance.transform.translate(this.chunkX * 32 + .5f,coord.z/64 + .5f,(31 - coord.y/64) + ((2 - this.chunkY) * 32)  - .5f - (height - 64)/64);
+
+         */
+
+
+        res.add(aux);
+        ModelInstance[] a = new ModelInstance[res.size()];
+        for(int i = 0; i < res.size();++i) {
+            a[i] = res.get(i);
+        }
+        return a;
+    }
 }

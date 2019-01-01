@@ -63,6 +63,8 @@ public class devScreen implements Screen {
         this.batchUI = new SpriteBatch();
         this.stage = new Stage(new ScreenViewport());
 
+
+
         this.camHigh = 16;
         this.environment = new Environment();
         this.environment.set(new ColorAttribute(ColorAttribute.AmbientLight, 0.4f, 0.4f, 0.4f, 1f));
@@ -75,10 +77,7 @@ public class devScreen implements Screen {
 
         Actor openOptions = new TextButton("Opciones \bv", Cardinal.getSkin());
 
-        openOptions.setPosition(this.stage.getWidth(), this.stage.getHeight()
-
-
-                , Align.topRight);
+        openOptions.setPosition(this.stage.getWidth(), this.stage.getHeight(), Align.topRight);
         this.stage.addActor(openOptions);
         Gdx.input.setInputProcessor(this.stage);
     }

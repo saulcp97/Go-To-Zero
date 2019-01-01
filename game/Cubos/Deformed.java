@@ -60,6 +60,12 @@ public class Deformed extends Block {
         this.v12.y = h2;
         this.v13.y = h3;
     }
+    public void setV0 (float h) {   this.v10.y = h; }
+    public void setHeightByAngles(Vector3 i, Vector3 j) {
+        this.v11.y = v10.y + i.y;
+        this.v12.y = v10.y + j.y;
+        this.v13.y = v10.y + i.y + j.y;
+    }
 
     @Override
     public void build3DPart(int x, int y, int z) { //Podriamos añadir variaciones para que un mismo bloque tenga variantes
@@ -99,6 +105,20 @@ public class Deformed extends Block {
             return false;
         }
     }
+
+    public int reduce(){
+        int height = 0;
+
+        while(this.v10.y > 1 && this.v11.y > 1 && this.v12.y > 1 && this.v13.y > 1) {
+            --this.v10.y;
+            --this.v11.y;
+            --this.v12.y;
+            --this.v13.y;
+            ++height;
+        }
+        return height;
+    }
+
 
     @Override
     public boolean rectify(Block b, byte dir) {

@@ -3,6 +3,7 @@ package com.mygdx.game.simulation.Edification;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Vector3;
 import com.mygdx.game.Cardinal;
 import com.mygdx.game.Chunk;
 import com.mygdx.game.Cubos.Decoration;
@@ -53,7 +54,7 @@ public class ProcGenerator {
             }
 
             for (int j = 0; j < 32; ++j) {
-                entry.tryToAdd(i, j, 1, (byte) 1);
+                entry.tryToAdd(i, j, 1, (byte) 4);
 
                 if (ProcGenerator.RandomS() < .05) {
                     if(!((i == 0 || j == 0 || i == 31 || j == 31) && Cardinal.containsNumber(Attribute,NoInBounds))
@@ -69,32 +70,34 @@ public class ProcGenerator {
     }
 
     public static void GenerateProcTerrain(Chunk entry) {
-        int v = (int) (15 * ProcGenerator.RandomS(2));
+        int v = (int) (15 * ProcGenerator.RandomS(3795));
         Deformed d;
+        float h0 = Math.abs(MathUtils.cosDeg(-1 * v)) + Math.abs(MathUtils.sinDeg(-1 * v));
+        Vector3 iV = new Vector3(), jV = new Vector3(0,0.1f,0);
+        float[] iVIndices = new float[32], jVIndices = new float[32];
+        for(int i = 0; i < 32; ++i) {
+            iVIndices[i] = Math.abs(MathUtils.cosDeg((i - 1) * v)) - Math.abs(MathUtils.cosDeg((i) * v));
+            jVIndices[i] = Math.abs(MathUtils.sinDeg((i - 1) * v)) - Math.abs(MathUtils.sinDeg((i) * v));
+        }
+
         for (int i = 0; i < 32; ++i) {
+            float hs = h0;
+            h0 += iVIndices[i];
             for (int j = 0; j < 32; ++j) {
                 d = new Deformed((byte) 1, (byte) 2);
-                int height = 1;
-                float h0 = .5f + Math.abs(MathUtils.cosDeg(i * v)) * 8.5f * Math.abs(MathUtils.sinDeg(j * v)),
-                        h1 = .5f + Math.abs(MathUtils.cosDeg((i + 1) * v)) * 8.5f * Math.abs(MathUtils.sinDeg(j * v)),
-                        h2 = .5f + Math.abs(MathUtils.cosDeg(i * v)) * 8.5f * Math.abs(MathUtils.sinDeg((j + 1) * v)),
-                        h3 = .5f + Math.abs(MathUtils.cosDeg((i + 1) * v)) * 8.5f * Math.abs(MathUtils.sinDeg((j + 1) * v));
+                d.setV0(hs);
+                d.setHeightByAngles(new Vector3(0,iVIndices[i],0),new Vector3(0,jVIndices[j],0));
 
-                while (h0 > 1 && h1 > 1 && h2 > 1 && h3 > 1) {
-                    --h0;
-                    --h1;
-                    --h2;
-                    --h3;
-                    ++height;
+                int h = 1;
+                if(i != 31 && j != 31 && i != 0 && j != 0){
+                    h += d.reduce();
                 }
 
-                d.setHeight(h0, h1, h2, h3);
-
-                entry.tryToAddBlock(d, i, j, height);
+                entry.tryToAddBlock(d, i, j, h);
+                hs += jVIndices[j];
             }
         }
     }
-
 
     public static void GeneratePreviusMap(Chunk entry, String map, int mapX, int mapY) {
         //De momento vamos a suponer que todos los mapas son Draknia

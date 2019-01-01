@@ -3,6 +3,7 @@ package com.mygdx.game.pantallas;
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.assets.loaders.ModelLoader;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -48,9 +49,10 @@ public class World3D implements Screen {
         this.game = gm;
         this.pl = this.game.mundo.getPlayer();
 
-        this.camera = new PerspectiveCamera(70, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        //Hay que añadir funciones chulas de Camara
+        this.camera = new PerspectiveCamera(60, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         this.camera.near = 0.01f;
-        this.camera.far = 3200f;
+        this.camera.far = 64f;
 
         this.camera.update();
 
@@ -59,11 +61,8 @@ public class World3D implements Screen {
         this.mSurvival.setToMap(this.game.mundo.getChunks());
 
         //read the files into strings
-        /*String VERTEX = "" ;*/
         String VERTEX = Gdx.files.internal("data/shader/vertex.glsl").readString();
-        //DefaultShader.getDefaultVertexShader();
         String FRAGMENT = Gdx.files.internal("data/shader/fragment.glsl").readString();
-        //DefaultShader.getDefaultFragmentShader();
 
         this.batch = new ModelBatch(VERTEX,FRAGMENT);
         this.batchUI = new SpriteBatch();
@@ -113,6 +112,8 @@ public class World3D implements Screen {
         multiplexer.addProcessor(mSurvival.getPantallaInventario());
         multiplexer.addProcessor(mSurvival.getPantallaPersonaje());
         Gdx.input.setInputProcessor(multiplexer);
+
+
     }
 
     @Override
@@ -124,19 +125,41 @@ public class World3D implements Screen {
         this.cami.Tick(this.game.mundo.getPunteroX(), this.game.mundo.getPunteroY());
 
         camera.update();
+
         Gdx.gl.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         Gdx.gl.glClearColor(0.4f, 0.59f, 0.95f, 1);
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT | GL30.GL_DEPTH_BUFFER_BIT | (Gdx.graphics.getBufferFormat().coverageSampling?GL30.GL_COVERAGE_BUFFER_BIT_NV:0));
 
+
+        /*
+        Gdx.gl.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        Gdx.gl.glClearColor(0.4f, 0.59f, 0.95f, 1);
+        Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT | GL30.GL_DEPTH_BUFFER_BIT | (Gdx.graphics.getBufferFormat().coverageSampling?GL30.GL_COVERAGE_BUFFER_BIT_NV:0));
+        Gdx.gl.glClearDepthf(1f);
+        Gdx.gl.glClear(GL20.GL_DEPTH_BUFFER_BIT);
+        Gdx.gl.glDepthFunc(GL20.GL_LESS);
+        Gdx.gl.glEnable(GL20.GL_DEPTH_TEST);
+        Gdx.gl.glDepthMask(true);
+        Gdx.gl.glColorMask(false, false, false, false);
+    */
+
+
+
         worldBatch.begin(camera);
+
+
+
         this.game.mundo.draw3DWorld(this.camera);
+
+
         worldBatch.end();
 
         this.batch.begin(camera);
         this.batch.render(p1,this.environment);
         this.batch.end();
-
         this.mSurvival.draw(batchUI, this.camera);
+
+        Gdx.gl.glDisable(GL20.GL_STENCIL_TEST);
 
         if (Gdx.input.isKeyPressed(Input.Keys.Q)) {
             this.pl.incrAngle(1);
